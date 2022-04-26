@@ -1,0 +1,135 @@
+Gestio Ip website for ipv6 calculator
+
+
+Ip v6 ------------128 bit address
+
+No difference between upper case hex and lower case hex(A=a)
+
+Zero compression-----If u have consecutive fields of zeroes ,they can be expressed with two colons.It can be done once per ip address
+
+Original ipv6 address:-
+1234:1234:0000:0000:0000:0000:1234:1234
+Zero compression:-
+1234:1234::1234:1234
+
+
+Original ipv6 address:-
+1111:0000:0000:1234:0011:0022:0033:0044
+Compressed ipv6 address:-
+1111::1234:11:22:33:44
+
+
+Compressed ipv6 address---
+1234:123:AA::BBBB:CCC
+Original ipv6 address---
+1234:0123:00AA:0000:0000:0000:BBBB:0CCC
+
+
+IANA----Internet Assigned Number Authority
+RIR-----Regional internet registeries
+ISP
+Customers(whole process of providing ip v6 address by subnetting it again and again
+
+
+
+/64---covers 48 bit GRP(global routing prefix) and 16 bit subnet field
+
+
+To enable ipv6 routing---------ipv6 unicast-routing
+
+
+We can't put or should not put the subnet id in the host address
+
+show ipv6 interface brief------------shows the all related interfaces of ipv6
+
+
+
+
+
+Link Local Address----
+Link local has a reserved rule of FE80::/10 which means it can begin with FE8,FE9,FEA,FEB
+RFC4291 states that it should have last 54 bits zeros so only combination that matches is FE80
+
+We just need to take the mac address and then put fffe in the middle and at last take the first two bits and convert them into binary number and just invert the 7th bit and take the value and replace the link local address first two 
+
+
+
+TO make a global unicast from the link local we need to provide the 
+ipv6 interface [ip address without the host address] eui64
+ and thus the link local will be added in the last of global unicast
+ 
+There is no ARP in ipv6 address
+
+
+
+DHCP process in IPv6---
+Solicit
+Advertise
+Request
+Reply
+
+Two Types of DHCP configuration----
+Stateful----same as ipv4 dhcp
+Stateless----new,host specifies the address itself
+
+
+Duplicate Address Detection(DAD)-------It is a quick verification of this self assigned ipv6 address uniqueness.DAD is really just the host trying to talk to itself ;should this attempt succeed;we have a problem
+
+
+Neighbor solicitation and Neighbor Advertisement----
+The DAD sends a neighbor solicitation request with the destination address and if it receives the Neighbor Advertisement it gets to know that someone is using this address beforehand only
+
+
+We can have more than one ipv6 global unicast address 
+
+
+In static routing we need to tell that how the packet should come back also...so we need to configure both of them
+
+In the process of static route we need to state the interface when using the link local address 
+
+
+
+
+
+
+Three types of ipv6 address---
+unicast
+multicast
+anycast
+
+
+
+
+Global unicast address----publically routable over the internet(ipv4 public address)(starts with 2 or 3)
+Unique local address-----not routable over the internet(ipv4 private address)
+Link local address-----communicates with the nodes on the same link(ipv4 APIPA)--used with the neighbor discovery
+Special Address--------loopback address(::1)
+
+
+
+
+
+In global unicast address ipv6 it is divded into----
+address prefix-----2 or 3 for global routable (3 bit)
+global routing prefix-----assigned to the organization by regional registeries(45 bit)
+subnet id----the subnet bits(16 bit)
+interface id----it can be manual,random,mac address(64 bit)
+
+
+In unique local address ipv6 is divided into----
+address prefix----starts from "fd" (8 bit)
+global id----admin has complete control over it and they can wish anything(40 bit)
+subnet id----subnet bits
+interface id----manual,random,mac address
+
+
+
+Link local address---
+This address is provided to each and every device no matter it is dhcp asigned or manual assigned
+It starts with "fe80"
+
+
+
+Multicast address starts with "ff"
+
+#ends
