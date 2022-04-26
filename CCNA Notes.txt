@@ -1,0 +1,849 @@
+switch configuration:-
+user exec mode----- enable(to go to priviledge exec mode)
+priviledge exec mode------configure terminal (to go to global configuration):-
+
+
+
+
+
+
+Basic Configuration:-
+global configuration mode:----
+hostname-----hostname [name]
+banner-------banner motd & [message] &
+console password------line console 0, password [pwd], login(to enable checking)
+domain name stop------no ip domain-lookup
+telnet password-------line vty 0 15 (for all the 16 lines),password [pwd],login
+for administratively blocking the port------------shutdown
+for port online----------------no shutdown
+enable password-------enable password enable(telnet)
+default gateway-----ip default-gateway 10.1.1.10
+
+		
+
+		
+Priviledge Exec mode:-
+saving configuration------write(builds configuration but lost when reboots)
+					------copy running-config startup-config	
+write erase----------------will erase startup-config from the cisco switch					
+management ip------show ip interface brief		(tells about the interfaces)
+int vlan1						(process of interacting the interface)
+ip add 10.1.1.1 255.255.255.0
+no shutdown
+show run 			-------tells every detail of the switch
+(Protocol shows that there is any traffic or not on the particular interface)
+If we want to run any command of priviledge exec mode from global configuration then we can use the keyword "do"
+
+
+
+
+
+Telnet:-
+To check the telnet connection from pc:-(telnet is not encrypted)
+set the pc configuration
+telnet 10.1.1.1
+>>>>>>>>>>>Doesn't let access the telnet-------no password<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>Disable all connection of vty line-----line vty 0 15 ,transport input none<<<<<<<<<<<<<
+
+>>>>Instead of enable password we should use enable secret as it is secure method<<<<<<<<<<<<<
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Troubleshooting commands:-
+trunk interfaces---------------show interface trunk
+Get the details of the interface----------show int f0/1 (priviledge exec mode)
+Show mac-address table---------show mac address-table [dynamic/static]
+port security details------------show port-security interface [name]
+Know which mac address it is connected to-------------show port-security address
+see startup configuration details-------show startup-config (priviledge exec)
+see routing tables----------------------show ip route
+show the routing protocol used in router-------------------show ip protocols
+get to know about the packets being received------debug ip icmp(priviledge exec mode)
+get to know about all the nat translations-------show ip nat translations
+get to know about the stats*:--------------------show ip nat statistics
+shows the clock time-----------------show clock
+all possible debugging is off-------------un all
+details of config register----------Show version
+reload the router(priviledge exec mode)-------reload
+
+
+
+
+
+Password Encryption Configuration:-
+Encrypting the passwords----------------service password-encryption  (not safe)
+								--------enable secret cisco	(global configuration)(instead of enable password)
+
+
+
+
+Ip address configuration:-
+int g0/1,ip address 10.1.1.1 255.255.255.0	(each interface is given an ip)(global configuration)
+no shutdown
+
+
+
+
+
+
+Switch conventions:-
+Always start from f 0/1 (fast ethernet) and g 0/1(gigabit ethernet)
+
+Router conventions:-
+Always start from f 0/0 (fast ethernet) and g 0/0(gigabit ethernet)
+
+
+
+
+
+
+
+
+
+
+
+
+Enable SSH:-(Done in global configuration)
+set the hostname-----hostname
+set the domain name-----ip domain-name nwking.org
+secure key------------crypto key generate rsa 
+bits required--------1024
+ssh version 2-------ip ssh version 2
+create username-----username imran password ssh123
+allow ssh----------transport input ssh(in the line vty section)
+for allowing ssh connection-----login local(if the vty password is set before, then use the feature local login)
+To connect from pc-----ssh -l [username] [target]
+
+
+
+
+
+
+
+
+
+Two modes for the port:-
+access mode-------------switchport mode access
+trunk mode--------------switchport mode trunk
+Dynamic Trunking Protocol-----If there is a trunk established b/w the switches then the switch start sending packets to each other leading to privacy breach. Therefore it is recommended to stop negotiate----switchport nonegotiate
+And when we set the mode it automatically disables trunking.
+
+
+
+Address Learning----gets to know from the MAC table
+Forwarding Decision---cut through, store & forward
+Spanning Tree Protocol----avoidance of loops
+
+
+
+
+
+
+
+
+
+
+
+VLAN----Virtual Lan is a technique dividing the switch into different subnets so that no other vlan can listen to the network.It will not allow to connect even if anyone gives the ip address of the same configuration as vlan.If the vlan are different it will not connect (configuration):-
+vlan databases----------------------show vlan 			(priviledge exec mode)
+create the vlan------------------------configure terminal,vlan 10,name management(1st vlan defined)(global configuration)
+create the vlan------------------------configure terminal,vlan 20,name employees(2nd vlan defined)(global configuration)
+set the vlan---------------------------int f0/1,switchport mode access,switchport access vlan 10 (global configuration)
+Configuring trunk port-----------------int f0/2, switchport mode trunk (global configuration)
+
+
+
+
+
+
+
+
+VTP-----VLAN Trunking Protocol---------not a trunking protocol
+(only two trunking protocols are there --ISL or dot1q---IEEE standard)
+This is used to synchronize the vlan tables with the other switches
+VTP does not replicate if the domain names are different
+
+Modes of VTP:-
+Server----Server is only able to make changes to the VLan Tables of switch and client copies it
+Client----Client is not able to make changes and just acquired the configuration
+Transparent----In this the client does not acquire configuration and tells the server that i will not accept any configuration settings and i will just relay to another switch
+
+VLan Pruning---------If another switch is not having a particular vlan then the switch avoids sending the packets of that particular vlan so that bandwidth is saved and that technique is vlan pruning
+
+
+>>>>>>>>>>set vlan for the range of IP--------int range f0/2-3 and then the same commands<<<<<<<<<<<
+
+In order to transfer packets from one switch to another switch and if there is any switch in between then we need to create the vlan so that it does not lose packet.This can be solved by VTP
+
+
+
+
+
+
+VTP configuration:--
+>>>>>>>>>>>>>by default all the switches are VTP server<<<<<<<<<<<<<<<<<<<<
+to see the status of vtp-------------show vtp status (priviledge exec mode)
+Setting the vtp version--------------vtp version 2 (global configuration)
+setting the vtp mode(client/server/transparent)--------vtp mode server (global configuration)
+setting the domain name------------------------vtp domain [domain-name] (global configuration)
+setting the vtp password----------------------vtp password cisco(password)
+
+Note:-THe switches will only replicate with the higher revision number only when the domain name is same
+and the password is same(Revision number is the no. of times changes made in the server)
+
+VTP configuration to other devices:-
+vtp password cisco----------so that password is matched and synchronization starts
+
+
+
+
+Vtp configuration to make client:-
+vtp mode client
+Note--The switch which is made a client can not create vlans afterwards
+
+Enable vtp pruning---------vtp pruning(global configuration)
+Manually hard coding to allow trunk traffic---------int f0/4,switchport mode trunk,switchport trunk allowed vlan 10
+This will only allow vlan 10 traffic to pass on
+
+
+
+
+
+
+
+
+
+Setting the communication channels:-
+Get the details of the interface----------show int f0/1 (priviledge exec mode)
+set the speed-----------------------------int f0/1,speed 100(global configuration)
+set the duplex method---------------------int f0/1,duplex full(global configuration)
+
+
+
+
+
+
+
+
+
+
+
+Port security:-
+It can be enabled only on access ports
+enable port security------------------switchport port-security mac-address [mac-address]
+another method------------------------switchport port-security mac-address sticky   (means the first mac address that 	is connected)
+violation occured------------------switchport port-security violation shutdown (note:-restrict maintains logs while protect does not)
+To enable it----------------------switchport port-security
+Again making the port up after it got shutdown----------int f0/1,shutdown,no shutdown
+port security details------------show port-security interface [name]
+Know which mac address it is connected to-------------show port-security address
+
+
+
+
+
+
+
+
+Setting up a small office:-(video)
+Network Requirement
+Network Design
+Communication
+
+
+
+
+
+
+
+
+
+
+
+
+Routing:-
+ROuting Tables-------Router makes the tables of possible route where the data can be transferred
+Routing Protocols:-
+IGP-Internal gateway protocol
+Three types of IGP:-
+Distance Vector-------RIP(Routing Information Protocol)
+Link State------------OSPF(Open shortest path first)
+Hybrid----------------EIGRP(Enhanced Interior Gateway routing protocol)
+
+EGP-External gateway protocol
+Types oF EGP:-
+BGP-----Border gatway protocol
+
+
+
+
+
+
+
+
+
+Static Routing:-
+In static routing we have to manually configure the router and specify the network through which the packets will be transferred.
+Naming convention:-
+1st network and 1st router-------192.168.1.1
+2nd network and 1st router-------192.168.2.1
+2nd network and 2nd router-------192.168.2.2
+3rd network and 2nd router-------192.168.3.2 and so on
+set the static route----------------ip route [ip address where the packet will go] [SM] [router's ip connected to it]
+It is done on each of the router manually
+
+
+
+
+
+
+
+
+
+RIP routing:--
+set the router rip------router rip(global configuration)
+set the version --------version 2 
+set the network---------network 10.0.0.0
+and so on (practical)
+>>>>>>>>>>>>>>>In this we set the network for each of the interface connected and it automatically gets to know of the route connected
+>>>>>>>>>RIP takes the input in the original classful form only.No Subnet mask
+for no auto summarization as it tells that the whole class is connected--------no auto-summary
+
+
+Limitatios of rip:-
+Auto Summarization---can be useful but it also tells if it not true(like in the subnetting 192.168.1.0/24)
+Loops----------------each router starts telling by adding each hop count
+Problem with distance vector
+
+Solution of counting to infinity:-
+Split Horizon------It says that the update of the router network u have received from the particular interface should not be told back about the latest update to him again
+Route prison-------It says that whenever the device is inaccessible then the router of that particular network tells other router that the network is accessible through the hop count 16 (i.e. network inaccessible)
+
+
+show the routing protocol used in router------show ip protocols
+details of the interface------------------show ip interface f0/1
+less admin rights more chance of believiability(120/1)--here 120 is the admin rights and 1 is the hop count
+If no particular route is there then it goes to candidate route (*)
+
+
+
+
+
+Router on stick:--
+We can't set the two interfaces for the different networks or subnets(its not feasible) on the same router so the basic solution is to create a subinterface in router and set the each subinterface to the different network accordingly:-This technique is known as router on stick
+creating the subinterface------------int g0/0.10
+setting the encapsulation-----------encapsulation dot1q 10
+setting the ip address---------------ip address 192.168.1.1 255.255.255.0
+setting the ip address---------------ip address 192.168.2.1 255.255.255.0
+and switch will be on the trunk mode
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ipv6 is 128 bit address
+Denoted by hexadecimal digits
+Grouping of zeros can be abbreviated with a double colon(per ip address)
+leading zero can be omitted
+anycast-------same ip address of multiple devices so whichever is near they respond(ipv6 support content delivery network)
+
+Link Local Scope-------They help in communicating locally(auto configured)(auto generated--starts from FE80 and uses mac address )(to make the host bit 64 bits FF:FE is used in between of the mac addres)
+Unique site local scope----------private ip addresss(starts from fd00)
+Global unicast--------starts from 2 routable over the internet
+
+Multicast--------starts from ff00 range
+
+TO configure ipv6 in router only use ipv6 instead of ip.
+ip address ---------its for ipv4 addres
+ipv6 address---------------ipv6 address
+
+
+To update the link local address:-
+int g0/0
+ipv6 address FE80::1 link-local					(this will update the link local address and remember only one link local address will be there and will get updated if there is anything new but simple interface will keep on upgrading when provided with the new ipaddress)
+
+
+To configure ip address in EUI64 format:-
+int g0/0
+ip v6 address 2001::/64 eui-64					(this will save the ip v6 address in eui 64 bit format that is the FF:FE in between the mac address in the host bit)
+
+to set the route----same command as ipv4 only ipv6 is changed
+additional commnand needed----------ipv6 unicast-routing
+
+
+RIP routing:-
+Sets the particular interface to start routing-----------int g0/0,ipv6 rip networking enable
+
+
+
+
+
+
+
+
+
+
+
+
+DNS:-
+Resolver contacts to root server and then root server says that i know about the .com is stored with TLD(top level domain ) server and then resolver contacts to tld server, then tld server says that i do not have imran domain name with me but i know u should contact authoritative name server and then thus resolver contacts it and then the server tells the ip address of the file server
+Two types of dns server:-Private DNS and Public DNS
+In DNS we need to add records of the domain name and the ip address of the particular web server
+In Web server only the hosting of the website will be there`
+
+
+DHCP--DORA process
+Dhcp discover
+dhcp offer
+dhcp request
+dhcp acknowledgement
+
+DHCP Configuration:-(this will allow to assign ip address and dns server settings to the pc)(global conf)
+ip dhcp pool [network name] and enter
+default-gateway 192.168.1.1
+dns-server 192.168.1.2
+network 192.168.1.0 255.255.255.0
+exit
+
+2nd router:-
+int f0/0(interface of the internal network),ip helper-address 192.168.2.1 (its compulosry to make router relay the dhcp request)
+
+To allow only a specific address to assign-----ip dhcp excluded-address 192.168.1.1 192.168.1.10(just write it as it is and the router automatically checks for the particular dhcp)
+Then to communicate between the devices we need to enable rip routing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACL:-(Access control list)
+It is a mechanism that can filter the traffic
+Standard ACL------Classification based on source ip(1-99 ACL no.)
+Extended ACL--------classified on the basis of Source Ip,Destination ip,protocol,Port no.(100-199)
+Once a match is found, no further comparison
+Remember that ACL should be done beforehand configuring on router and the order of the command really matters
+
+
+General Rule:-
+Standard ACL apply it close to destination
+Extended ACL apply it close to source
+
+Wild card mask------------difference between the 255.255.255.255 and the subnet mask that we want to apply the acl on
+
+Standard ACL Configuration:-
+ip access-list standard Secure_MA(word)
+permit host 192.168.1.130
+deny 192.168.1.128 0.0.0.63				(WIld card mask)(wild card mask is for the whole subnet otherwise only the host will be denied)
+deny 192.168.1.0 0.0.0.127				(WIld card mask)
+permit any
+exit
+
+Selecting the interface where the filter is done--------int g0/0
+Activating the ACL rule							----ip access-group Secure_MA out (out or in of the interface)
+Show the access list---------------------show ip access-list													
+
+
+
+
+
+ECL Configuration:-
+ip access-list extended Secure_ma(word)
+Permit/deny [source ip] [destination ip] [port no.]
+permit 192.168.1.0/32 192.168.1.224/32 eq 80 (here also the wildcard will be used same like the standard)
+
+webtraffic-----permit tcp 192.168.1.3/25 192.168.1.193/25 80
+
+
+
+
+
+
+
+
+
+
+
+
+NAT and PAT-
+NAT-Network address translation
+PAT-Port address Translation
+
+Inside Local-----source Private ip address
+Inside global----source public ip
+Outside local/global-----destination ip address public
+
+Static Nat----Each device has its own public ip address
+Dynamic Nat---Each device can communicate but if there are two public ip address then only two can communicate to the internet at the same time
+Overloading NAT(PAT)-In this there is a single public ip address assosciated to all the devices that the can be differentiated with the port no.'s.Through its translation table it can route and get to know which device has requested to access the internet
+
+get to know about the packets being received------debug ip icmp(priviledge exec mode)
+get to know about all the nat translations-------show ip nat translations
+get to know about the stats*:--------------------show ip nat statistics
+
+Basic Configuration:-
+selecting the inside and outside interface-------int g0/0,ip nat inside
+										---------int g0/1,ip nat outside
+										
+										
+Static configuration---We need to have one to one (private to public)
+ip nat inside source static 192.168.1.10 200.124.22.1(inside to the outside)
+
+Dynamic NAT--Not much required
+Create an access list with any of the method classic or modern
+Create a pool:---ip nat pool [name][start ip address] [end ip address] netmask [subnet mask]
+ip nat inside source list [listname] pool [poolname]
+
+
+
+
+PAT configuration:-
+access-list 1 permit 192.168.1.0/24 			(whole network access list)(no need of deny)(used to identify the interesting traffic-term used to define the traffic which will be translated)
+same as dynamic nat only overload is used in the end command of NAT
+
+ANother method by the use of interface:-
+ip nat inside list 1 interface g0/1(outside interface) overload
+
+>>>>Interesting Traffic-----The traffic that we want to transfer through any particular interface or we can say the filtered traffic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Troubleshoot:-
+Wireless Controller-------This device is connected to all the Access points.Because of this device we can change the username and password or any settings for all the access points
+ping------get to know about the packets received or not
+tracert------tells about the every hop where the packet is being transferred
+nslookup-------tells about the dns server and we can know about the each ip address
+
+Remember log messages like (interface changed state to up) will not appear if you have a telnet connection with the router.It will only appear when the console connection is being made to the router.
+
+Terminal Monitor---------Helps to get logs even on the telnet connection
+
+logging synchronous--------command in the telnet configuration helps to synchronize logs between the telnet connecton made .
+
+logging 10.1.2.10---------It will enable syslog and all the logs on the particular router will be sent to the server(global configuration)Syslog option should be enabled on the server.
+
+show clock--------------shows the clock time
+un all---------all possible debugging is off
+service timestamp log msec-----------updates the log in the server with the correct timestamp
+
+
+NTP- Network time protocol----updates the same time on every device.There can be a ntp master through which everything is updated.Ntp feature should be enabled on the server.
+ntp server [server ip]-----------------global configuration to enable ntp
+
+CDP-Cisco Discovery Protocol(By default is enable)
+LLDP-----Link Layer Discovery Protocol(by default it is not enable on cisco)
+show cdp neighbors------------------shows the connected connected to the particular device
+cdp run--------------cdp protocol enabled on the system,no to disable(global configuration)
+cdp enable----------enable cdp on the interface, no to disable (sub global configuration)
+lldp run--------------lldp protocol enabled on the system(global configuration)
+lldp transmit/receive----------enable lldp on the interface (sub global configuration)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Let's put on the hacker's hat
+Router Password Recovery:-
+Break sequence(different for different devices)
+configuration register (0x2142)-----0x2102 loads the startup configuration. Changing to 0x2142 will load the default configuration
+System reset
+
+Blue cable------is used for connecting the laptop to the console of the router....Go to laptop->terminal and then ok and it will give access to the router configuration.(Putty software)
+
+
+Steps to configure:-
+First switch it off and then on(ctrl+c)
+It will enter into rommon mode
+type confreg 0x2142->reset.
+reset(after getting the pwd)(If it was the secret pwd then u can easily change the pwd as we do it normally)
+copy startup-config running-config(this will change the running to what we have in the startup)
+In the end go to global configuration and type config-register 0x2012 for the loading of startup configuration
+Show version---------details of config register
+reload---------------reload the router(priviledge exec mode)
+
+TO change the normal pwd normal steps to change and to change the secret password normal steps would take place
+difference is that we can normal pwd but not the secret password
+
+
+Switch password recovery:-
+Plug off the cable and put it back on leading to restarting of switch
+Press mode button for 3 seconds which will give access to rommon mode
+flash_init----------it will initialize the flash
+dir flash:	-----------changing directory to flash
+rename flash:config.text flash:config.old--------renaming the config file
+reset----------------it will restart the switch
+(after this it gone to default configuration)
+rename(used in real devices)
+more flash:config.old----used in the packet tracer
+copy the content in it and paste it on the global configuration and then it will create the config.text file again.
+copy running-config startup-config
+
+
+
+
+
+
+IOS backup and recovery:-
+Copy from Flash to TFTP:
+To do this we need to enable tftp server by enabling it from the server
+show flash-----------states the current OS used in router
+copy flash tftp--------copy from source to destination
+and then the process
+
+Copy from TFTP to flash:
+copy tftp flash and then the process
+
+delete flash[file name]----------------deletes the flash file
+boot system flash:[file name]----------from two flash files it decides which to boot flash from the next file
+
+If there is no flash file then it will boot from the rommon mode
+Steps to recover it from rommon(read only mode monitor) mode:-
+tftpdnld-------------------downloads the file from the tftp server (rommon mode configuration)
+fill all the require parameters
+tftp dnld and it will confirm and say yes
+and at last boot/reset
+
+IOS Licensing---------We need licensing after ios v15 for data and security and ip base is available free for permanent use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ICND2:-
+Native Vlan-----------Traffic going from the switch like from vlan 20 so native vlan will be 20
+VLAN Revisited
+Dynamic Trunking Protocol
+Problems caused by Lyer 2 problem:-
+Broadcast storm
+Mac address instability
+Multiple copies of frame
+(Not much useful)
+STP(802.1d) takes about 50 seconds
+RSTP(Rapid STP) takes 0-21s(latest 2004)
+
+PortFast & BPDUGuard(temporary solution to increase the port time)
+end ports:-interfaces that is connected with the end devices
+spanning-tree portfast(sub configuration interface f0/0)
+spanning-tree bpduguard enable(sub configuration interface f0/0)
+
+show spanning-tree summary-------------list the summary of stp protocol
+show spanning-tree summary-------------list the summary of stp protocol
+
+
+Ether Channel(Not so important)
+Switch Stacking:-A stackable switch is a network switch that is fully functional operating standalone but which can also be set up to operate together with one or more other network switches, with this group of switches showing the characteristics of a single switch but having the port capacity of the sum of the combined switches.
+
+
+AAA-Authentication,Authorization adn accounting
+Two Protocols:-
+RADIUS-----Remote Authentication Dial In User Service
+TACACS+----Terminal Access Controller Access Control System Plus
+
+
+DHCP Snooping:-It is a technique to block the attack of MITM and DOS as it does not allowed end devices to send server messages.
+ip dhcp snoop binding
+
+
+SVI--------Switch virtual interface- It is used to help to manage the different vlan made on the switch by accessing it through ip address by creating the virtual layer 3 interface
+Configuration:-(Layer 3)
+int vlan 10		(creating a virtual interface 10)
+ip routing------------to enable ip routing on layer 3 switching (global configuration)
+
+On layer 3 switch to enable routing---------ip routing(global configuration)
+
+
+
+
+
+
+
+
+
+
+Routing protocols:-protocols which help in communication of routers.It help them in sharing of the routes so that routing decision can be taken.
+Routable protocol-------ipv4 and ipv6 used by routers to transfer packets
+
+Interior gateway protocol:---Routing protocol used inside the organization(autonomous system)(RIP,OSPF,EIGRP)
+Exterior gateway protocol:---Routing protocol used outside the organization(autonomous system)(BGP)
+RIP-Distance vector
+OSPF---Link cost
+EIGRP---Bandwidth and delay(hybrid)
+
+ROuter Types				Administrative Distance(Believaiblity)
+Connected						0	
+Static							1
+EIGRP							90
+OSPF							110
+RIP								120
+
+
+
+
+
+
+
+
+OSPF:-
+Secure
+Link state
+Classless
+
+How Ospf works:
+Form Neighbors
+Build LSDB(LInk state database)
+Build Routing Table
+
+In ospf to from neighbors then the router sends a multicast hello message which the ip is 224.0.0.5
+Cost=Reference bandwidth / Link bandwidth
+Area Border Router:----A router whose one interface is in the area 0 and other in the different area
+
+
+DR-Designated Router
+BDR-Backup Designated Router
+OSPF in shared Medium:-
+Need of no extra bandwidth as neighbor concept is used (no use of any shared medium)
+Election for DR:-
+Checking of OSPF id
+Checking for Router id(whichever is greater)
+
+The relation between the DR and the other routers will be full
+
+OSPF databases and Tables:-
+Adjacency database(Neighbor table)
+Link state Database(Topology table)
+Forwarding Database(Routing table)
+
+
+COnfiguration:-
+router ospf 1	----------------1 is the priority(1-65535)
+network 192.168.1.0 0.0.0.255(wild card mask) area 0 			--------area 0 is the compulsory to write as it is a single area
+
+
+show ip ospf neighbor----------------------see the neighbors of the router
+clear ip ospf process----------------------clears all the proces and restarts it
+
+
+
+Verification:-
+show ip protocols------------------details about the ip protocol
+show ip ospf-----------------------details about the ospf configured
+show ip ospf interfaces------------help to kow about the interfaces
+show ip ospf neighbor----------------------see the neighbors of the router
+show ip ospf database--------------details of the ospf database
+
+
+
+default-information originate-------------------it tells the other router that if you do not have any info on your routing tables about the particular route then send it over this network
+
+OSPf supports load balancing
+
+Multiarea OSPF configuration:-
+In multiarea there are many areas configured. So we need to specifically state the router that yes this particular interface is of area 45 and this specific area is of area 0
+
+network 192.168.26.2 0.0.0.0 area 45
+network 192.168.12.2 0.0.0.0 area 45
+network 192.168.234.2 0.0.0.0 area 0
+
+
+passive-interface fastEthernet 0/0 ----------it will give no hellos as it is a passive interface(router configuration)
+
+
+
+
+
+
+
+EIGRP---Hybrid Protocol
+Forms Neighbors
+No periodic full update
+Routing by gossips
+
+
+How EIGRP works:-
+Form neighbors
+Topology Exchange
+Build routing table
+
+Without the wild card mask u can only give classful ip address
+with the wil card mask u can give classless ip address
+
+
+COnfiguration:-
+router eigrp # (autonomous nu.  and it should be the same then only neighbor will be formed)
+network 10.1.12.0  0.0.0.255 
+
+
+
+show ip eigrp interfaces---------shows the interfaces where the eigrp is running
+show ip eigrp neighbors-----------shows the eigrp neighbors
+show ip eigrp topology------------details about the topology
+
+EIGRP databases and Tables:-
+Adjacency database(Neighbor table)
+Topology database(Topology table)
+Forwarding Database(Routing table)
+
+#ends
