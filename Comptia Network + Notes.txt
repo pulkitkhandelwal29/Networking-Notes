@@ -1,0 +1,3987 @@
+Comptia network +:-
+Module 1.1 - OSI and TCP/IP Models
+OSI and TCP/IP Models Overview:-
+Please--Physical Layer
+Do--data link
+Not--network
+Throw---transport
+Sausage --session 
+Pizza---presentation
+Away---application
+
+
+
+
+
+
+OSI Model:----
+Physical Layer:-This first layer consists of everything from cables and bits, to electrical impulses and wireless data travelling back and forth. This is the layer where data is converted to signals and vice versa. Also included in the physical layer are pinouts, voltages and cable specifications.
+Data Link Layer:-Essentially, this layer is about access to a computer, access to a device. This is the layer that packages bits and data into frames. Frames are segments of data that we are pushing over layer 2 connectivity. It is a transfer from point to point and MAC addresses.
+Network Layer:-the Network Layer of the OSI model. It is commonly referred to as the IP layer. This is where logical addresses are translated into physical and network routing, re-assembly and fragmentation are performed.
+Transport Layer:-This layer provides us with management and control and also helps us to transfer data that we send and receive. It helps splits communications into different packages using either Transmission Control Protocol (TCP) or User Data Protocol (UDP). These protocols provide for either verification or no verification of delivery.(divides into small chunks)
+Session Layer:-is the traffic control layer. This is where traffic between computers is controlled and where connections are established, managed and terminated.(Connection management)
+Presentation Layer:-This layer translates applications into data so it can be understood and displayed by the application layer. This layer also formats the data for sending (encryption) so it can be decrypted once it is received.
+Application Layer:-This is the layer which enables applications to access the network and helps to synchronize communications.(includes SMTP,HTTP,FTP) network aware application and this layer helps in communicating and are the protocols that helps to access the network. They are not the real applications. 
+
+
+
+
+
+
+
+
+TCP/IP Model:-It now comprises of 5 layers(New version)
+Please --Physical Layer(layer 1)
+Do     --Data link layer(layer 2)
+Not	   --Internet/Network Layer(Layer 3)
+Throw  --Transport Layer(Layer 4)
+Apples --Application layer(Layer5,6,7)
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.2 - Devices & Protocols in Relation to OSI Model
+Devices & Protocols in Relation to OSI Model (part 1)---
+MAC-Media access control (Layer2-data link)--physical address
+Ip Address-(Layer 3-network layer)---logical address
+EUI-64(Layer 2 -data link)-IPv6 global unicast
+Frames(Layer 2 data link protocol delivery unit)
+Packet-(Layer 3 network layer)--Segment of data
+Switches--(Layer 2 data link)
+Router-(Layer 3 network layer)--sometimes called layer 3 switch
+Hub-(Layer 2 data link)--passes info to everyone
+Encryption Device--(Layer 6 Presentation Layer)
+Cable--(Layer 1 Physical Layer)
+NIC-(Layer 1 Physical Layer)
+Bridge-(Layer 2 Data Link Layer)--Point to point
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.3
+IP Addresses in Relation to OSI Model:-
+ipv4-32 bit address--divided into 4 octets--192.168.1.1(in the form of 8,4,2,1) and back to original form (from left to right in the form of 16,8,4,2,1)
+
+
+
+
+
+
+
+IP Address Classes:-
+IP address classes allow us to divide up a host of IP addresses between a network and a host segment. The network segment of the IP address tells us the number of the network we are on.
+IP address has network segment and host segment
+eg:-192.168.1.1--(192.168.1--Network Id) and (.1--Host ID)(254 hosts in a network)(255 broadcast)
+Class A-
+1.0.0.0-126.0.0.0(Subnet mask-255.0.0.0)--here 1st portion is the network id
+Subnet Masks-tells us that what portion is network portion and what portion is host portion
+Class B-
+128.0.0.0-191.255.0.0(Subnet Mask-255.255.0.0)
+127 is the localhost
+Class C:-
+192.0.0.0-223.255.255.0(Subnet Mask-255.255.255.0)
+Class D-
+224.0.0.0-239.0.0.0(Multicasting)
+Class E-
+240-254 (Experimental;Used for research)
+
+
+
+
+
+
+
+
+
+
+
+APIPA (part 1):-
+Automatic Private IP Addressing--is a feature of Windows-based operating systems (included in Windows 98, ME, 2000, and XP) that enables a computer to automatically assign itself an IP address when there is no Dynamic Host Configuration Protocol (DHCP) server available to perform that function
+(assigns the IP address of 169.254.x.x) We should not get this ip as this does not allow to route outside the network(resolve as soon as possible)
+
+
+
+
+
+
+
+Private IP Addressing:-
+ClassA :-
+10.0.0.0-10.255.255.255 (Stealing Mask from public ip address--255.0.0.0)(/8)(Default Subnet Mask--255.0.0.0)
+Class B:-
+172.16.0.0-172.31.255.255(Stealing Mask from public ip address 255.240.0.0)(/16)(Default subnet mask-255.255.0.0)
+Class C:-
+192.168.0.0-192.168.255.255(Stealing Mask from public ip address--255.255.0.0)(/24)(Default Subnet Mask--255.255.255.0)
+
+
+
+
+
+
+
+CIDR-Classless Inter-Domain Routing:-
+/16--16bits in a row of 1's and not 0's in between and after 1's i.e 16bits then 0's are only there 
+255.255.0.0=11111111.11111111.00000000.00000000
+bits go to left or right in the 16,8,4,2,1 chart
+
+
+
+
+
+
+
+
+IPV4 vs IPV6:-
+ipv4-32bits(4 octets in 8 bits)(4 billion address)(4*8)
+IPv6-128bit(Hexadecimal) in the chart of 8,4,2,1(just 4 bits)(340trillion,trillion,trillion address) (4*4*8=128)
+F is the highest with value being 15(8+4+2+1)
+consecutive 0's are replaced by :: can use only once
+eg:-2001:0db8:ac10:fe01:0000:0000:0000:0000(=)2001:0db8:ac10:fe01::
+emit leading zero just after the colon
+eg:-2001:0db8:ac10:fe01:0000:0000:0000:0000(=)2001:db8:ac10:fe01::
+In ipv6 each digit have 4 binary digit
+
+
+
+
+
+
+
+
+
+MAC Addresses:-Media Access Control
+physical address of nic
+unique worldwide
+mac address are hexadecimal format 6 octets with 2 digits (2*4*6=48)
+48bit address (5E-EA-1D-5E-CA-E7)
+colon (:) and hyphen (-) are supported.
+used in:-
+DNS
+ARP
+DHCP
+used in data link layer 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unicast, Multicast and Broadcast:-
+Unicast:-
+IPv4->1 to 1
+Multicast:-
+IPv4->1 to many
+Broadcast:-
+IPV4-Broadcast to all in broadcast domain(Router doesn't broadcast)
+Anycast:-
+IPv6:-anycast to nearest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.4
+Routing and Switching (part 1):-
+Allows for connecting devices
+Switching--in the same network
+routing--in the different network
+
+Understanding how different devices data moves--hub,switch,routers,multilayer switches,repeater,bridge
+Hub--Symbol(->):-(dumb)
+Receives  data/sends to everyone
+computers decide to accept or reject
+
+Switches(->\n<-\n->\n<-):-
+Smart hub as they send data to the defined destination
+Tracks MAC and port numbers to send the data
+
+Multilayer Switches:-
+can perform routing and switching
+layer 2 and layer 3
+
+Bridges:-
+Connect network segments(just like floors)
+Break up / segment traffic (Layer 2)
+
+Repeater:-
+Increase signal
+repeaters can amplify by just giving power cells
+repeaters can do signal regenration by cleaning and amplify it from electromagnetic interference
+
+Routers:-
+move data accross different networks-
+Segmentation/Subnetting
+Manage traffic flow
+
+Routers manage tables-
+send data where?
+static (doesn't update itself)vs dynamic (update itself)
+Protocols--EIGRP(Enhanced Interior Gateway Routing Protocol-only availabe in cisco routers),OSPF,etc.
+why routers are set as Default Gateway:-
+Router address only direct packets not a broadcast message from a client
+Computers are set to send to the routers which they do not know whom to send..unknown destination
+
+
+
+
+
+
+
+
+
+
+
+
+Routing Tables:-
+Where to pass on the data
+Info:-
+needs to know the destination network(ip and subnet mask)
+router need to know how to get there to different router
+no.of hops (checkpoints to pass to transfer the data)
+view complete routing table by :-route print (command)
+protocols help to determine the fastest path
+
+
+
+
+
+
+
+
+
+
+
+
+Routing Metrics:-
+Qualities used to determine the best path
+
+Hop Count--The stops in betweeen to reach from point A to point B(tracert command to get the hop count)
+
+MTU(Maximum Transmission Unit)--The largest packet which can be transmitted
+
+Bandwidth--Bandwidth is also the amount of data that can be transmitted in a fixed amount of time. For digital devices, the bandwidth is usually expressed in bits per second(bps) or bytes per second.
+
+Costs-Higher Reliabliity and less cost
+
+Latency--amount of delay---or how long the data is taking time
+
+
+3 protocols that our router requires:---
+Link State--cost based,multifactors like distance,speed etc.(OSPF)
+Distance Vector---Based on hops(RIP and RIPv2)(We can't judge just because of hops)
+Hybrid--both as based on link state and distance vector
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IGP vs EGP:-(Routing protocols)
+
+IGP(Interior gateway protocol)---
+Inside an autonomous network or inside an organization 
+eg:-RIP,RIP2,OSPF
+
+RIP(Routing information protocol)--
+Distance vector (hop count) but not able to handle than 15 hops and classless ip addressing 
+
+RIP2(Routing information protocol)--
+more hops and handles classless ip addressing
+
+OSPF(Open Shortest path first)--
+most used interior gateway protocol and link state analysis and handles classless IP addressing 
+
+IGRP(Interior gateway routing protocol)---
+cisco distance vector,more hops than RIP and not handles classless ip addressing
+ 
+EIGRP(Enhanced IGRP)--
+Cisco hybrid , supports Classless IP addressing
+
+
+
+
+
+EGP(Exterior gateway protocol)--
+connect external networks or routers
+only uses BGP(Border gateway protocol)
+path vector protocol
+similar to distance vector except only one speaker for domain...every domain has a speaker or representative which can talk to other speakers thus reducing traffic and initializing the best path as it broadcast the information
+
+This lesson covers IGP vs EGP. IGP stands for Interior Gateway Protocol and is found inside an autonomous network. EGP stands for Exterior Gateway Protocol and is used for connecting external networks and routers.  EGP utilizes Border Gateway Protocol (BGP) and Path Vector protocol and is similar to distance vector except there is only one ‘speaker’ node per domain to talk to the other speaker nodes, which reduces traffic and helps manage information sent out over the exterior. 
+
+
+
+There are five Routing Protocols:
+
+Routing Information Protocol (RIP): this is a distance vector and relies on hop count. However, this is limited as it can handle no more than 15 hops and cannot handle classless IP addressing.
+
+RIPv2: This is also a distance vector protocol, however it has support for more hops so it can offer support for classless addressing.
+
+Open Shortest Path First (OSPF): This is the most used; it is link state analysis and cost based, it can handle classless addressing.
+
+Interior Gateway Routing Protocol (IGRP): This is a CISCO based distance vector and has more hops than RIP but it still cannot handle classless addresses.
+
+Enhanced Interior Gateway Routing Protocol (EIGRP): This is a CISCO hybrid and an enhanced version of IGRP, it supports classless addresses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dynamic Routing Tables:---
+Distance Vector (IGP)---RIP,RIP2,IGRP
+Link state(IGP)---OSPF
+Hybrid(IGP)---EIGRP
+Path vector Protocol(EGP)---BGP(Border Gateway Protocol)
+
+Convergence(Steady state)---
+Routers think that they have the same routing information.They have the idea how their toplogy looks like.
+They all have the same roadmap
+Same network and topology information
+
+It occurs at different rates--
+Network size--depends on small and large..If there is a  change in the toplogy router takes some time to tell other routers that yes there is a change in the network..let me know then i will inform you
+Hardware and device problems--router has a malfunction and not able to tell that which is the best path
+
+
+This lesson covers dynamic routing tables. A routing table can be static or dynamic. A static routing table requires information to be manually entered by hand. A dynamic routing automatically finds the best route. Dynamic routing uses either Internal Gateway Protocol (IGP) or External Gateway Protocol (EGP). This lesson also discusses convergence, or steady state. Convergence occurs when all of the routers have all of the same topology information and all of the same routing information. Convergence means routers are communicating with each other and they all have the same ideas on how to get to a particular server.
+
+
+
+
+
+
+
+
+
+
+
+
+Spanning Tree Protocol:---
+Bridges connect network segments
+
+Spanning tree protocol prevents loops as it can cause loops during broadcast as the broadcast received from one bridge will be sent to other and it will think that i have received broadcast message so i have to transfer to all other bridges in the mesh toplogy that can cause infinite loops
+
+solution through spanning tree protocol:--(upside)
+turns criteria links to "blocking"
+when devices go offline the protocol removes block as he will not be able to send any message to any of the devices if all will be blocked
+
+
+downside:-
+most direct path can not be used as the blocking is done before so longer path is shared
+
+
+This lesson covers spanning tree protocol, which prevents a packet from doing an endless loop in a network. This is accomplished by turning certain links to blocking mode. It sends out a packet that lets spanning tree protocol know not to send data on certain links; a certain bridge can block off its link to other bridges which prevents loops.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Broadcast vs Collision Domain:--
+Broadcast domain is where the broadcast message reach
+All devices that can be reached at layer 2
+Does not pass routers(routers do not broadcast messages) while all other devices broadcast messages
+The devices receiving broadcast message are in broadcast domain till router
+
+
+Collision Domain where the devices talking simultaneously--
+on links(cables) and hubs between devices
+hubs create collission domains as they are dumb and send all the packets received to him
+Switches/bridges/routers stop them
+The devices which are connected to hub are in collission domain and in other devices a single on link(single cable) will be the collission domains
+
+
+This lesson covers broadcast versus collision domains. A broadcast domain is an area of a network where a broadcasted message can reach and are all the devices in a network that can be reached at OSI Layer 2 and it anywhere that a link does not pass through a router. Collision domains involve two devices trying to communicate simultaneously and therefore creating data collisions. This can happen on links connected to devices as well as devices connected to a hub.
+
+
+
+
+
+
+
+
+
+
+
+
+VLAN(Virtual local area network):---(image)
+vlan segments a large network
+Broadcast from a device go to same vlan
+Access Ports:--Different devices to a switch with port numbers
+Trunk ports:--Different switches to a switches
+
+VLAN's filter different criteria:---
+Physical port(manual)
+based on mac address
+Subnetting IP address
+
+
+This unit covers Virtual Local Area Networks (VLANs) which allow us to segment a large network. The broadcasts go to the same VLAN and are composed of two major port types:
+
+Access Ports: allow us to connect devices in one particular VLAN to a switch
+Trunk Ports: allows us to connect different switches to multiple VLANS
+
+VLANS filter with different criteria depending on how they’re configured:
+Physical Port
+MAC Addresses
+Subnetting IP Addresses
+
+VLANs are very useful in that they help to segment large networks, cut down on traffic on make networks a bit more secure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Port Mirroring:--(image)
+Also known as SPAN port(Switch port analyzer)
+Configure port to have all data mirrored to it..
+
+Used for:---
+Capturing network data
+Diagonostics/Research/IDS
+
+Downside:--
+and also devices can't talk on this port as this is a just a mirror to receive packets for like wireshark
+if there is a huge data coming on this port, the packet might get dropped
+and if we want to connect to internet or talk to any other device we have to use other NIC
+
+
+This lesson covers port mirroring. Port mirrors are also known as Switch Port Analyzers and are commonly referred to as SPAN ports. Port mirroring can be set up on switches, routers and other devices. It allows us to set up ports that have all the data mirrored to it, captures network data and allows for IDS (Intrusion Detection Systems). Port mirroring takes all data and send it to where it needs to go as well as making a copy and sending to whatever devices are on a SPAN port.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.5 and 1.6
+TCP/IP Suite (part 1)----(image)
+Suite of protocols for the internet
+
+TCP(Transmission Control Panel)---
+verified delivery to endpoint
+One to one communication
+
+IP(Internet protocol)--
+Delivers packet to devices
+Maps logical(Ip) to physical(mac) (dena ip , mac address ko)
+Routable Protocol
+
+This lesson covers the TCP/IP Suite of protocols for the Internet:
+
+Transmission Control Protocol (TCP): verified delivery to endpoint with one-to-one communication
+Internet Protocol (IP): Delivers packets to devices and maps between logical (IP) and physical (MAC). It’s a routable protocol.
+The TCP/IP suite is all of the different protocols all applied together so computer are able to communicate with one another across a network.
+
+
+
+
+
+
+
+
+
+
+
+
+TCP/IP suite(part 2):--(image)
+This lesson briefly reviews the OSI Model which has the following layers:
+
+Physical
+Datalink
+Network
+Transport
+Session
+Presentation
+Application
+The lesson goes on to discuss how the seven layers of the OSI model relate to the TCP/IP suite. One of the protocols in this suite is Address Resolution Protocol (ARP), which allows computers on a network to determine other computers physical addresses, MAC addresses and correlate with their IP addresses and is located in the datalink layer of the OSI model. The lesson also covers IP which is connected to different routing protocols which route data and packets in the Network layer. Remember the OSI Model is used to help gain and understanding.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Communications Protocols:---(image)
+Set of rules and protocols that dictate how packets are transferred.
+It works upon the transport layer
+
+TCP-Transmission Control panel
+Connection oriented
+Receives an acknowledgement packet after each packet is send
+Large packet size(20 bytes header) (Packet header contains the addressing info and order no. or an id no. to know is the order going in a sequential order or not)
+TCP packets are numbered
+TCP packets can be retransmitted
+TCP is one to one connection as it is connection oriented
+TCP is not used for broadcasting 
+Three Way Handshake:--
+1st Client sends "Syn" packet to 2nd client
+2nd client sends "Syn/ack" packet to 1st client
+1st client again sends "ack" packet to 2nd client
+Data in TCP is a stream(i.e the packet can be cut anywhere in the middle whether it makes no sense or not)
+
+
+UDP-User Datagram Protocol
+Connectionless protocol
+It is used for broadcast
+Small Packet size(8 byte header)
+It gets to the client fast
+No error recovery and no retransmission is done
+Distinct chinks(Every packet is cut in the form which is logical) not like in the TCP data stream as there is no assurity that next packet will be received or not
+
+
+
+
+
+
+
+
+
+
+
+
+
+(ICMP)Internet Control Message Protocol:--
+It is a network layer protocol
+it is used to determine to know whether the service is reachable or not.
+ICMP echo request to other machine to know whether it is online or not
+Mainly used in ping command
+don't have port assosciated with it
+It is sometimes configured in machines not to reply these ICMP request as organizations don't want to let others know whether it is availabe or not.
+Used to deliver error and reply to query
+
+IGMP(Internet Group Management Protocol):--
+It is used for multicast
+This protocol manages how message is delivered to a group of people
+don't have port assosciated with it
+
+
+
+
+
+
+
+
+
+
+
+
+
+(ARP)Address Resolution Protocol:--
+It is a protocol which finds out which IP address is associated to with which MAC address
+It is layer 2 data  link layer
+don't have port assosciated with it
+
+This lesson covers ARP, which stands for Address Resolution Protocol. This allows computers to discover which IP address is associated with which MAC address. ARP helps us discover what specific network interface card a packet is being sent too. ARP requests allow us to form tables so we can map ports to different MAC addresses and send specific packets to specific MAC addresses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Port Communication Endpoints:-
+They are communication endpoints(Logical)
+They help in running different services or protocols simultaneously in a net connection
+65,535 ports per net connection
+Ports are reserved by programs and applications
+Default ports can be changed
+They work on transport layer 4
+They will be communicating on TCP/UDP protocols
+eg: 192.168.1.13:80  here 80 is the port number
+
+This lesson covers ports which are communication end points. Ports allow for multiple applications to use net connections and are reserved by programs and applications. The defaults can be changed. Ports communicate over TCP/UDP and are part of the Transport Layer) layer 4 of the OSI model.
+ 
+
+
+
+
+
+
+
+
+
+
+Protocols: FTP, TFTP, SFTP, SMTP, POP3 and IMAP----
+FTP(File Transfer Protocol) (21) TCP--
+No encoding or overhead
+Making it insecure
+
+TFTP(trivial file transfer protocol) (69) UDP--
+Sends to many clients at once
+trivial means of less importance
+
+SFTP(Secured file transfer protocol) (22) TCP--
+encrypts using ssh(secure shell)
+more secure than ftp
+
+
+
+Mail Protocols:--
+SMTP(Simple mail transfer protocol) (25) TCP--
+email transmitting between servers and the clients like using outlook
+eg: outlook -> Microsoft -> yahoo
+
+POP3(Post office protocol version3 ) (110) TCP--
+Getting from the servers or pulling email from servers
+Clients download emails from the server
+it typically copies from server to client and then deletes it from the server(can be changed)
+
+IMAP(Internet Message Access Protocol) (143) TCP--
+downloads mails from server to client
+it keeps a copy after the mail is downloaded by client
+more configured than POP3
+
+
+This lesson focuses on ports that use the TCP and UDP communications protocol.  This lesson discusses the following protocols:
+File Transfer Protocol (FTP): This is a TCP protocol and there is no encoding or overhead, it is insecure.
+Trivial File Transfer Protocol (TFTP): This is a UDP protocol which allows us to send to multiple clients at once.
+Secure File Transfer Protocol (SFTP): This is a TCP protocol that encrypts with Secure Shell (SSH) and is more secure than FTP.
+
+This lesson also discusses the following mail protocols:
+Simple Mail Transfer Protocol (SMTP): Uses TCP; e mail between servers and from Outlook.
+Post Office Protocol 3 (POP3): Uses TCP; e mail comes from client download from server. Typically copies and deletes.
+IMAP: uses TCP, downloads from server to client and keeps a copy of the message on the server, it has more configuration ability than a POP3.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocols: HTTP and HTTPS:----
+HTTP(hyper text transfer protocol) (80) TCP--
+Web Browsers sends a "get" request to web server for the website
+all info is in clear text
+
+HTTPS(Hyper text transfer protocol secured) (443) (TCP)--
+Encrypted HTTP
+Works with SSL (Secure socket layer) and TLS(now) and also may work with other protocols
+Certificate between client and server
+Certificate is a piece of information telling server u are , who u say u are (revealing their identity)
+Information not in a clear test form
+
+
+This lesson covers HTTP and HTTPS protocols:
+
+Hypertext Transfer Protocol (HTTP): This TCP works in web browsers, the browser sends a ‘get’ request to a web page and all the information is in interpreted into what we see on the screen when we access a web site. All information passed over HTTP is in Clear Text.
+Hypertext Transfer Protocol Secure (HTTPS): This is encrypted HTTP; the information is not in Clear Text. This is used on banking web sites.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocols: Telnet, SSH and RDP:---
+Telnet (23) UDP/TCP--
+Remote connection
+unencrypted
+replaced by SSH
+
+SSH(Secure shell) (22) TCP--
+Encrypted connection between points
+may work with other protocols
+
+RDP(Remote Dekstop) (3389) TCP/UDP--
+May need to be blocked
+
+
+This lesson focuses on the telnet, SSH and RDP protocols:
+
+Telnet: This is UDP/TCP; allows for remote connection and is unencrypted
+Secure Shell (SSH): This is TCP, it is an encrypted connection between points and may work with other protocols.
+RDP: This is TCP/UDP and is accessed via remote desktop and may need to be blocked
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocols: SNMP, NTP and TLS:---
+SNMP(Simple Network Management Protocol) (161 for agent) (162 for management console)
+Management of Devices over Ip(info of the device)
+It works on every device over Ip
+Routers,printers etc.
+agent is on device and accessed by management
+
+NTP(Network time protocol) (123) UDP--
+Helps devices to synchronize time on different devices on a network
+
+TLS(Transport Layer Security) port varies
+Successor of SSL
+It works with other protocols to make it secured
+
+
+This lesson focuses on the following protocols:
+
+Simple Network Management Protocol (SNMP). This protocol allows us to manage certain devices over an IP network.
+Network Time Protocol (NTP): This is a UDP protocol which allows us to set up different devices to synchronize time across a network.
+Transport Layer Security (TLS): This is the successor to Secure Socket Layer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocols: DNS and DHCP:---
+DNS(Domain Name System) (53) TCP/UDP---
+Classify FQDN to IP address(forward Lookups) and IP address to FQDN (reverse Lookups)
+Transmits from Databases
+
+DHCP(Dynamic host configuration panel) (67 for server) (68 for client) UDP--
+Automatically provide IP address to each device with subnet mask and default gateway
+Automatically Configure IP address information
+If we statically assign Ip address DHCP will not be used
+
+
+
+This lesson focuses on the following protocols:
+
+Domain Name Systems (DNS): this runs over TCP/UDP and allows us to which allows us to resolve fully qualified domain names to IP addresses or IP addresses to fully qualified domain names. DNS allows us to transmit a query to a particular server and find out a specific IP address (such as google.com).
+
+Dynamic Host Configuration Protocol (DHCP): This runs over UDP and is what computers use to automatically get IP address information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocols: SIP and RTP---Relationship(image)
+SIP(Session Initiation Protocol) (5060)
+Initiates a session but no data
+Indicates to remote computer to open a port for communication
+
+RTP(Real time protocol) (port varies depending upon customization,how we setup our RTP protocol)
+Used for streaming video or audio like in VOIP
+Detects,out of sequence arrival
+ 
+ 
+ This lesson covers the following protocols:
+
+Session Initiation Protocol (SIP): Initiates a session but does not carry any data, initiates opening a port for communication over RTP.
+
+Real Time Protocol (RTP): Can be used to stream audio and video and is able to detect out of sequence arrivals and make appropriate adjustments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.7
+What is DNS? (part 1):---
+Domain Name Service
+Resolve FQDN to IP address
+Computers speaks electronic impluses 0's and 1's 
+Human remember names
+Client Sends Request
+Server responds request
+
+
+
+
+
+
+What is DNS? (part 2) – The Internal DNS Server
+Forward Lookups---FQDN to IP address
+Reverse Lookups--IP to FQDN
+
+This lesson covers the Internal DNS Server (or domain controller).
+
+
+
+
+
+
+
+
+DNS Servers (part 1) – Specific functions of the DNS Server----
+Resoultion--
+FQDN to IP (Forward)
+IP to FQDN (Reverse)
+
+Top level Domains(.com,edu,org,gov,mil)
+DNS server reads through right to left of the domain name provided
+eg:-https://www.portal.microsoft.com/login
+https will be recognized as how the connection should be established
+www will be recognized as that searching will be done on world wide web
+/login will be removed for a second as it will start searching from .com domain
+DNS will begin with---
+.com -> .microsoft -> portal
+And when it finds it ...it will go to the login page of the www server
+
+
+Dynamic DNS---
+Auto Update records
+Monitor changes
+May not give everyone permission to change the dns records
+
+
+
+
+
+
+
+
+DNS Records (part 2)----
+A---Address record (sales.cybrary.local -> 192.168.1.17) (only forward lookups--FQDN to IP)
+AAAA---IPv6 address record (sales.cybrary.local -> IPv6 address)
+CNAME---Canonical name record (sales.doc.cybrary.local -> sales.cybrary.local)
+Cname record is used to provide a nickname as a domain so that clients doesn't get the information where they are redirected to..so whenever sales.doc.cybrary.local will be called it will look into the record that yes this is redirected to sales.cybray.local and thus giving the result
+
+MX---Mail Exchange
+PTR--Pointer ...it helps in reverse lookups(IP to FQDN)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.8
+Troubleshooting Theory-----
+
+This lesson covers trouble shooting network environments. In order to troubleshoot; it’s important to go through a process known as the Troubleshooting theory; this allows an issue to be resolved in the best way and consists of the following steps:
+
+Identify problem
+Establish theory of probable cause
+Test the theory
+Establish a plan of action/identify effects
+Implement/escalate
+Verify functionality/preventative measures
+Document findings, actions, outcomes
+
+
+
+
+
+
+
+
+
+Identify the Problem and Establish a Theory----
+This lesson covers identifying a problem and establishing a theory. When identifying a problem, take the following steps:(technet for microsoft and many other forums)
+
+Gather information like :
+Is this the first time?
+What was going on?
+Any recent computer changes?
+Identify symptoms
+Questions users
+Talk not only to a single user
+Determine if any changes
+Always look for the recent changes as almost time they are only related to the troubleshooting or any error 
+
+
+
+Take the following steps to establish a theory:-
+Research:
+	Previous documentation
+	Online
+Question the obvious:
+	Check the most logical solutions
+	Do not jump to conclusions
+Scientific guess the hypothesis:
+	Work off hypothesis even if not 100% sure
+	Eliminate the most with the least
+
+
+
+
+
+
+
+	
+	
+Test Theory to Determine Cause and Establish Plan of Action (POA)---
+
+This lesson covers testing a theory in order to determine the cause of a problem. When testing a theory; take the following steps:
+
+Once theory is confirmed:
+	Determine next steps
+	Determine how to fix
+If theory is not confirmed:
+	Create a new theory
+	Escalate
+
+
+
+When establishing a plan of action (POA) and identifying effects; take the following steps:
+
+Remember every action has an equal and an opposite reaction
+
+ALWAYS back up: in case you make the issue worse, it’s important to back up settings and data
+
+Plan actions step-by-step
+
+It’s impossible the issue might not be fully resolved
+
+Determine/layout next steps
+
+
+
+
+
+
+
+
+
+
+
+
+Implement Solution/escalate and Verify Functionality---
+
+This lesson covers implementing solutions and escalating as well as verifying functionality and preventative measures. When implementing solutions, take the following steps:
+
+Carry out steps for solutions
+If needed, escalate
+
+
+To verify functionality and take preventative measures(so that the user doesn't change it); take the following steps:
+
+Verify original issue is fixed
+That there are no new issues
+Hold onto to configuration and data
+Perform preventative measures
+Prevent issue from recurring
+Lock settings and configurations
+Check for faulty equipment
+
+
+
+
+
+
+
+
+
+
+
+Document Findings / Actions / Outcomes----
+
+This lesson covers documenting findings, actions and outcomes. Documentation should happen from the start and should include:
+
+Symptoms
+Causes
+Trouble shooting
+Discovered issue
+Resolutions
+
+Documentation needs to be written clearly and should avoid omitting steps, slang and technical jargon.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 1.9
+Networking Virtual Computers---
+This lesson focuses on identifying virtual networking components and discusses the following:
+
+May only have one NIC
+Physical devices may be unnecessary
+Virtual switches
+Virtual VLANS
+Other virtual services
+
+
+
+
+
+
+
+
+
+
+
+Virtual Switches---(image)
+switch like  connectivity
+Communicate over Layer 2
+Set up vlan's
+utilize single NIC as trunk port
+
+This lesson covers virtual switches. Virtual switches allow us to have the same environment in a virtual environment that we would if we were using a physical switch and allow computers to communicate with more ease than if they were using an actual physical switch. These switches also allow us to set up virtual local area networks (VLANS) while using a single Network Interface Card (NIC).
+
+
+
+
+
+
+
+
+
+
+Virtual Desktops---
+This lesson covers virtual desktops. Virtual desktops allow us to have an entire virtual computer that we can connect to which allows us to access files, folder and different applications and be consistent with a physical environment. There are two main categories of virtual desktops:
+
+Remote Desktop Virtualization:
+	Virtual desktop with remote data
+	Consistent folders everywhere
+	Remote data execution
+Local Desktop Virtualization:
+	Virtual machine runs locally
+	Virtual disk/image synced
+	Local resources but constant network not required
+
+
+
+
+
+
+
+
+
+
+
+Virtual Servers---(image)
+Servers that provide a full service
+Full physical server may not be needed
+Allows for logical distribution /Scaleable resources
+Communicate over physical NIC
+
+This lesson covers virtual servers. Virtual servers are servers that we can virtualize that provide us with a full service so that a full physical server may not be necessary. Virtual servers allow for logical distribution and scalable resources and communicate over the Network Interface Card (NIC); which may necessitate the installation of more NICs and virtual switches.
+
+
+
+
+
+
+
+
+
+
+Virtual PBX(Private Branch Exchange)---(image)(Work from home type)
+This lesson covers the virtual PBX, which stands for Private Branch Exchange which is a telephone switch and call manager. The virtual PBX allows for:
+
+Establishing connections
+Maintaining connections
+Disconnecting connections
+Providing call information
+The virtual PBX replaces hardware but still requires a call agent. It’s useful for Voice Over Internet (VoIP) and works well in every environment from a small office to a large call center.
+
+
+
+
+
+
+
+
+
+
+Onsite vs Offsite----
+This lesson covers the difference between onsite and offsite, meaning is a service hosted on "in house" or "in cloud.” 
+ 
+When services are onsite:
+There is faster response time and more control
+Business continuity can be affected if there are problems with the building (e.g. a power failure)
+It can be pricey to keep staff on site to work on the web server
+
+
+When services are off-site:
+It can be more economical to manage a company web server
+Allows for business continuity in case of something like a power failure
+A great resource for backing up a lot of data
+Information Control
+Connection Delay
+
+
+
+
+
+
+
+
+
+Naas (Network as a service )Network----(image)
+Offsite network
+Just need computer,link to ISP and NAAS
+Host apps,data servers etc.
+
+This lesson covers Network as a Service (NaaS). NaaS allows for an offsite network and all that is needed is a computer, a connection to an ISP. NaaS has a number of advantages and disadvantages. 
+
+Advantages include:
+Less in house management
+Greater business continuity and backups
+Powerful resources for less money
+Scalable
+
+Disadvantages include:
+Less control/more security concerns
+Can cost a lot
+Connectivity issues
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2.0
+Routing Tables---
+It helps to know the router which is the best path to send the data to the destination
+Access router through admin/browser
+
+Dynamic Tables:-
+IGP-RIP, RIPv2 OSPF,IGRP,EIGRP
+EGP-BGP
+
+Static Routing Tables:--
+Set particular routes
+can set "Default static route"
+can be needed when there is a testing dep. and development dep. and the packets are just meant for testing dept., so we don't want that packet should be routed via development dept.
+
+Remember STP(Spanning tree protocol)
+
+Dynamic: automatically find routes using different protocols (i.e., EGP, IGP)
+Static: set particular routes
+This lesson also covers Spanning Tree Protocol (STP); which keeps multiple routers from forming loops.
+
+
+
+
+
+
+
+
+
+NAT and PAT (part 1)--(image)
+NAT(Network address translation):--
+Translate private ip address to public ip address and vice versa
+Allows external users to access internal
+Static NAT-one private -> one public
+Dynamic NAT-maps address from the pool
+Overloading NAT-Port address translation
+
+This lesson introduces Network Address Translation (NAT) and Port Address Translation (PAT). NAT allows a private IP address to be translated to a public address and vice versa. It is performed via static, dynamic and overloading NAT. PAT is overloading NAT and translates based on IP and port.
+
+
+
+
+
+
+
+
+NAT and PAT (part 2) – IP Address Types---(image)
+Inside Local(Local Device addressing private Ip address)(any workstation/computer)
+Inside Global(Local device addressing public ip address)(router)
+Outside Local(Remote device addressing private ip address)(webserver having private ip address but we can't see the private ip address of a webserver as this is not routable and also for the security reason)
+Outside Global(Remote device addressing public ip address)(webserver having public ip address or a router remotely)
+
+PAT(Port address translation)--It helps to map multiple private ip address to a single public ip address also known as overloading NAT
+Translate based on IP and Port
+Computers sends packets
+
+When two or more clients access the same destination then the router originates its self port number.
+eg:-when two computers wants to send packets to facebook on port 80, then router originates one source port number (2050) for one device and second source port number (2051) for another device. Then the respective packets are sent to facebook server to retreive information and then packets are sent again back to router on the source port i.e. (2050,2051) and then router sees it and then sent it back to the respective private ip address clients.
+
+
+
+
+
+
+
+
+
+
+VLAN and VTP Configuration---(image)
+Vlan-virtual local area network
+separate network into multiple segments like vlan1,vlan2
+Require use of managed switches
+
+vlans are based upon :--
+port based
+mac address based
+subnet based
+Access Ports are used to connect devices to the switch for a vlan
+Trunk port or trunking--connect different switches and connect multiple vlans
+
+VTP Configuration--
+Vlan Trunking protocol
+It is a cisco technology
+Propogation of vlan information to different switches
+
+To setup switches with the vtp configuration we need--
+VTP domain
+vtp protocol
+vtp password
+
+
+This lesson covers Virtual Local Area Network (VLAN) and VLAN Trunking Protocol (VTP) configurations. A VLAN allows us to take the infrastructure for one local area network and make multiple virtual local networks which helps to segment different broadcast domains. They cannot talk to each other unless it’s via a router. A VTP configuration is not assigned to one particular VLAN.
+
+
+
+
+
+
+
+
+
+
+Managed vs Unmanaged and Interface Config--
+
+This lesson covers switches and discusses two types:
+Managed: offers additional control of data flow and configurations; they are accessed via a default web interface with a username and password(khud setup karna manually aur login karke check karna if any unauthorized access and also sometimes in switches we need to change the mode to managed mode otherwise it will not make any changes)
+Unmanaged: No web interface, just let connections run. No additional functionality.(its almost like a dumb hub but not a hub as it also maps the ip address to mac address but still managed is good)
+
+
+This lesson also discusses the following types of interface configurations:
+Full duplex--both directions simultaneously
+Half duplex--one direction at a time
+Port speeds--10/100/1000mgps
+
+
+
+IP addressing configuration--DHCP automatically assign or statically assign
+MAC filtering--ip filtering or mac address filtering allows only the devices in the configuration settings
+
+
+
+
+
+
+
+
+
+
+POE, Traffic Filtering, Diagnostics and QoS---
+POE--power over ethernet
+useful for voip phones and cameras where the data is also being sent as well as the electricity is also used for giving power to the devices(providing electric impulse to devices over ethernet)
+pins 1and 2,3and6 --they both work in pairs to close the circuit so that it starts to work
+
+
+Traffic Filtering--
+In this, Router inspect packets or drop packets based on filters
+Filters like--
+Ip address
+Packet types
+Some routers also act as a firewall which is used to do traffic filtering
+
+
+Diagnostics--
+Provides additional information and logs
+Stats and usage info
+collisons and error info
+connection made info
+We may have to install additional software on devices so that they redirect logs to the administrator conputer
+These logs are totally based upon the router and switches and their capability
+
+
+QOS-Quality of Service
+Prioritize certain packets
+packets susceptible to delay are given more weight than others in the prioritize setting
+like VOIP, audio and video
+
+
+
+
+
+
+
+
+
+
+Port Mirroring--
+Also known as SPAN(switch port analyzer)
+configure port to receive copy of data
+capture/analyze packets
+we can place an IDS on span ports but IPS is not useful here
+IPS is not useful here as devices on mirrored ports can't talk to other devices
+If we want our device to connect to internet from a span port we need another NIC to talk to internet
+
+Setup device to capture data--
+Packet analyzer(wireshark)
+Packet Sniffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2.2
+WAP Placement and Antenna Types--(image)
+Placement is critical, specially with the wireless networks
+overlapping wap have same ssid's
+Setup like this that it only overlaps 10%
+Channels like 1,6,11 do not overlap services
+
+
+Specialize wireless analysis software--
+determine network requirements
+conduct site survey
+determine dead spots and wap limits
+See antenna type
+wireless analysis software is being installed in laptop and we move around the particular organization with the blueprints imported in the software and then we can find it out that this particular place is best for the installation of the wap
+
+Antenna Types--
+Omni-Directional (Equal in all directions)
+uni-directional(Focused power)
+
+
+This lesson covers setting up and configuring Wireless Access Point placements. It is necessary to be in the right place so it can send a signal to all devices. A WAP needs to be high and out in the open so it can easily send out a signal. When there are multiple WAPs, it is important their channels do not overlap, as that can interfere with the frequency of the radio signals they send out. This lesson also discusses antenna types:
+
+Omnidirectional: equal in all directions
+Unidirectional: focused power, useful for bisecting at another access point
+
+When setting up a WAP and determining which antenna type to use, we may want to turn the power of the antenna down so there is less power which might help to prevent overlaps and unwanted users using a company wireless connection.
+
+
+
+
+
+
+
+
+Interference and Frequencies (part 1)--
+
+Interference-
+Disruption of signals and waves
+Disruption devices like cordless phones and microwaves and baby monitors
+May be mitigated by changing frequencies
+2.4ghz is crowded
+5ghz is less crowded
+
+Frequencies-
+It is the band at which the devices communicate
+Frequency is waves per second
+2.4ghz band--
+pass easier through objects
+longer range
+more interference
+
+5 ghz band--
+more data on each radio as the wave is formatted
+less distance
+more expensive
+
+
+This lesson covers interference which results in the disruption of signals and radio waves. Metal walls, baby monitors and microwaves can all cause disruption of wireless signals. This can be mitigated by changing the frequency. This lesson also discusses frequency; which are bands at which devices communicate. Frequency is measured in waves per second and is measured in gigahertz (Ghz).
+
+
+
+
+
+
+
+Wireless Standards, Channel Bonding and MIMO--
+Wireless Standards--
+802.11a--54mbs and 5ghz
+802.11b--11mbs and 2.4ghz
+802.11g--54mbs and 2.4ghz
+802.11n--300mbs(channel bonding) and 2.4ghz/5ghz
+
+Channel Bonding--
+used by 802.11n
+In this, two wireless bands are being bonded
+
+MIMO-Multiple input and multiple output
+used in 802.11n
+Different antennas for sending and receiving
+
+
+This lesson covers wireless standards, channel bonding and multiple input, Multiple Out (MIMO). Wireless standards are managed by the IEEE 802 regulation which specifies how to use different frequencies. A wireless access point (WAP) and the wireless network interface card must be compatible in order to communicate. This lesson also covers channel bonding which is used only by 802.11n and allows to wireless bands to be bonded. Participant also learn about multiple input, multiple out point, which has utilizes different antennas for sending and receiving.
+
+
+
+
+
+
+
+
+
+
+
+Compatibility and SSID---
+Compatibility--
+Determined by the NIC and the WAP(wired access points)
+a/n--5ghz
+b/g/n--2.4ghz
+Speed is lowest common denominator. least one is picked up
+
+To see the interface supported is by typing command--
+netsh wlan show drivers
+
+
+SSID(Service set identifier)--
+Name of the wireless router
+Default is set to broadcast
+But we should change to no broadcast
+
+
+This lesson covers compatibility between wireless standards and Service Set ID (SSID).  Compatibility is determined by the relationship between the network interface card and the computer and the wireless access point that we are connecting to. Service Set Identifier (SSID) identifies wireless names. To make the router secure, set to no broadcast, so users actually have to do some configuring to get in to the wireless network, which offers more security.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//be down to earth always and always gain knowledge and never bring your ego in between and always respond not react 
+
+Module 2.3
+DHCP Overview and Static vs Dynamic---
+DHCP-Dynamic host configuration protocol
+Provides automatic ip addressing
+Components required--
+DHCP device to hand out the addresses
+NIC to "obtain IP address automatically"
+
+DHCP process--
+Client->DHCP discover->DHCP Server
+Client<-DHCP offer<-DHCP server
+CLient->DHCP request->DHCP server
+Client<-DHCP ack<-DHCP server
+
+If the above process fails then the computer assigns us the APIPA addressing i.e 169.254.x.x and this ip address is not routable.
+
+
+Static IP addressing--
+We want static ip address on devices like DNS server, router, file server and DHCP server,printers, ip cameras etc.
+static devices can be on DHCP by creating a reservation using mac address
+
+Dynamic ip addressing--
+From DHCP
+Set Range(scope)
+Set lease(time for the ip address)
+
+
+
+
+
+
+
+
+
+
+Reservations, Scopes and Leases--
+Reservations-
+To statically assign ip address to a particular device we need to create a reservation by assigning a particular ip address to a particular mac address (Ip address->Mac address)
+We can do this by:-
+Set static ip address to a device
+Reserve a particular ip addres to DHCP server
+
+Device Reservations like printers,IDS,IPS,Ip cameras,file server,dns server,dhcp server etc.
+
+
+Scopes-
+Range of addresses given out.
+Multiple DHCP servers-
+Separate parts of scope for different DHCP servers
+80/20 rules
+Eg-192.168.100-180 DHCP server A
+192.168.181-200 DHCP server B
+
+Leases--
+Automatic Ip address are leased
+DHCP set lease time
+Devices attempt to renewal after 87.5% of lease
+
+Renewal Process-
+Client asks for renewal
+If DHCP confirms it then it is again renewed and if it doesn't the client has to again go through the DHCP process
+We can also do it manually by passing the commands-
+ipconfig /release
+ipconfig /renew
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2.4
+Interference, Signal Strength and Bounce--
+Interference-
+From Objects/Signal Interference->
+Signal going in and out
+Intermitent connectivity
+
+Correcting the interference-
+Closer to WAP
+Move WAP higher and more centralized
+Different Antenna
+Changing the frequency with 5ghz
+Check for interference by using the software
+Add Access points so that our signal gets strengthens
+
+
+
+Signal Strength--
+Modify "Gain" so its in office
+Test boundaries using software
+Change the distance between the client and wap
+Different antenna like omni directional and uni directional as per your purpose
+2.4ghz(longer distance)
+
+Bounce--
+signal bouncing off objects
+It scatters signals
+Move WAP and modify "gain"
+
+
+
+
+
+
+
+
+
+
+
+Configurations, Incompatibilities, Incorrect Channel and Latency--
+Configuration--
+Determine the correct configurations for WAP like-
+wireless standard
+Frequency
+Gain(the gain describes how well the antenna converts radio waves arriving from a specified direction into electrical power.)
+Encryption
+SSID Broadcast
+DHCP
+Default login
+
+
+Incompatibilities--
+Certain wireless NIC's are not compatible(check for a/g/b/n)--it should support
+netsh wlan show drivers--Info of wireless NIC's
+may be passing the incorrect key
+
+Incorrect Channels--
+Auto configuration channel sometimes doesn't work
+Channel Overlaps/same channel leading to interference
+
+Latency--
+Radiowaves are slower than cables
+Takes time to travel
+Affects video,voip and audio,gaming etc.
+
+
+This lesson discusses issues with configurations, incorrect channels and latency within wireless networks and reasons that might result in problems such as:
+
+Determining correct configurations for the Wireless Access Point (WAP)
+Determining if certain wireless Network Interface Cards (NIC) are compatible
+Sometimes automatic configurations do not work
+Radio waves run slower than cables
+
+
+
+
+
+
+
+
+
+Encryption Type, SSID Mismatch and Incorrect Switch Placement--
+Encryption type--
+wep,wpa,wpa2
+
+SSID Mismatch-
+SSID broadcast off
+->Manual Entry
+->must match exactly
+
+Incorrect switch placements-
+switch placement can be wrong or configuration problem
+switch may be off on laptop leading to no connectivity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2.5
+Switching Loop, Bad Cables, Port Configuration and VLAN Assignment--
+Switching Loop-
+Layer 2 Loop
+Broadcast packets loop forever
+Multiple links may be in place leading to redundancy
+STP(Spanning tree protocol) takes care of it but can fail
+Changing device or topology can also lead to it
+
+Bad Cable--
+Physical cable damage or connector damage
+if we use incorrect category cable then it can lead to bad cable
+Maximum distance exceeded
+Electromagnetic interference(EMI)
+
+Port Configuration--
+Wrong port type--SPAN port or trunk port,vlan settings and mac list(certain mac address allowed)
+Port speed like simplex , Half Duplex , Full Duplex and speed upto 10/100/1000mbs
+
+VLAN Assignment--
+Checking port configuration, Trunk port configuration
+Vlans must be on same subnet
+Checking the router and the data being sent to different vlans
+
+
+
+
+
+
+
+
+
+
+
+Mismatched MTU, Bad Modules, Power Failure and Missing Routes-
+Maximum Transmission Unit(MTU)-
+Packet hits next hop and are dropped
+It is called as a Black Hole(No error)
+Especially with DF=Do not fragment the big size packets and the next hop router is not given permission to fragment it leading to dropping of packet
+
+Bad Modules-
+SFP-Small Form Factor Pluggable
+GBIC-Gigabit interface Counter
+These modules are those that provide port additional functionality
+
+Power Failure--
+Device may have lost power
+Set battery backups
+
+Bad/Missing Routes-
+Routing information is provided incorrect
+bad next hop information
+misconfigured manual or we can change to dynamic
+
+
+This lesson continues to cover trouble shooting common wire and switch issues and discusses the following:
+
+Mis-matched Maximum Transmission Unit (MTU)/Black Hole: packets are too large for a certain ‘hop’ and are dropped. If no error about the packet is received, essentially we’ve hit a Black Hole.
+Bad Modules (SFP, GBIC): Bad port module on device
+Power Failure: Device may have lost power
+Bad/missing routes: routing information is incorrect
+
+
+
+
+
+
+
+
+
+Wrong Subnet Mask, Wrong Gateway, Duplicate IP Address and Wrong DNS--
+Wrong subnet mask--
+subnet mask indicates network portion and host portion
+Can throw off an addressing scheme
+check CIDR notation
+
+wrong gateway--
+Device send packets for other networks
+Typically router
+Routers only address direct packets
+Not setting wrong gateway
+
+Duplicate Ip address-
+windows may show error
+prevents packet correct delivery
+Check static assignments
+check DHCP reservation scope
+
+Wrong DNS--
+Domain Name Server resolves FQDN to IP address
+External DNS don't know about the internal devices(we have to check out internal dns)
+Dns Forwarders--internal dns forwards request with the external dns if it doesn't know the details
+DHCP DNS Options should be correct-clients pulling the dns information correctly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 2.6
+List Requirements--
+
+This lesson covers planning and setting up a basic network. In order to do this correctly, it is necessary to go over a series of checks to make sure everything works:
+
+Evaluate the network and determine needs
+Assess business needs vs budget constraints
+Number of users--how many pc's are required
+IP Addressing
+Type of hardware necessary
+Internet service provider equipment
+Local Servers and cabling
+Printers
+WLAN
+Redundancy/uptime
+Security concerns
+Growth
+
+
+
+
+
+
+
+
+Cable Length--
+Cat 5 ethernet cable--standard ethernet cable (rj45 conenctor)--100m (maximum cable length)
+Need to Increase efficiency and more redundancy
+Do not exceed the maximum cable length reach
+Decrease bottlenecks(one point where the traffic is maximum)
+STP working properly--multiple switch forms loops when broadcast message
+plenum space=plenum cable (Plenum space like under the floor, above the ceiling..spaces we can't see)
+Avoid Electromagnetic Interference/Cable Bends
+Best Cable Management--managed and labelled
+Cable Testing tools
+
+
+
+
+
+
+
+
+Device Types / Requirements--
+Devices like routers, switches, Wap,Bridges, Nic's etc.
+
+This lesson covers device types and requirements for setting up a network. When setting up a network, we need to make sure the devices meet all the necessary requirements. When setting up routers, switches, Wireless Access Points (WAPs), bridges and Network Interface Cards (NICs), it is necessary to check the following:
+
+Routing protocol: make sure they support correct addressing scheme
+Traffic filtering ability: understand the different abilities of different devices
+All in one devices vs stand alone: devices that are all inclusive (includes firewalls,switching,routing)
+Managed vs unmanaged: Managed devices are switches with access panels and have web interface, unmanaged offers no traffic management abilities, it is just a smart hub
+Port speeds, duplex, VLAN
+Network Interface Card capabilities/cable types(Interference Compatibility like a/b/g/n)
+Wireless standards/Wireless Access Point (WAP) antenna(unidirectional or omnidirectional)
+Traffic monitoring(device needed to monitor the traffic)
+
+
+
+
+
+
+
+
+
+Environment and Equipment Limitations--
+
+This lesson covers environmental and equipment limitations. The environment is about the physical location we are in and this can impact a network. Site factors that can influence a network include:
+Physical layout of site
+Distance between computers
+Keeping equipment in environmentally controlled areas
+Sources of EMI
+Wireless site survey
+Power surge protectors(Battery backup like UPS)
+
+
+It is also important to be aware of equipment limitation such as:
+Maximum wireless range
+Port speeds
+Work station capabilities
+Support purchasing for equipment(Technical expert help)
+Set expectation relative to budget considerations
+
+
+
+
+
+
+
+
+
+Compatibility Requirements--
+When planning a network, it is important to consider compatibility requirements; are devices compatible with each other and the existing infrastructure? Be sure to consider the following:
+
+Wireless standards and frequencies
+Cable standards and types(what type of category cables we are using)
+Router types and protocols(Different routing protocols)
+Port speeds/Duplex (each device should be provided the same properties)
+MTU size(Maximum transmission Unit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3.1 and 3.2
+Fiber Connectors (part 1) – Cable Connections--
+Fiber-Glass and Plastic Rod
+Data travels using light
+No electromagnetic Interference(EMI)
+
+Types of Fiber Optic--
+Single Mode Fiber(SMF)--
+Single Core
+Carry Long distance upto 50miles
+Laser Diode
+
+Multi-mode Fiber(MMF)--
+Thicker Core
+Multiple rays and shorter distance(500m)
+LED Diode
+
+
+This lesson covers one of the most core components of networking which is the connection between our in points. Data needs to be sent via a physical medium. These can include cable mediums such as:
+
+Fiber optic cables: relies on light signals, no electromagnetic interference (EMI)
+Co-axial cables
+RJ45/CAT cables
+
+
+
+
+
+
+
+UTP and STP--
+UTP-Unshielded Twisted Pair cable
+STP-Shielded Twisted Pair cable(Least susceptible to EMI as shield is there)
+Cables are twisted so that it cancels the electromagnetic interference
+
+
+
+This lesson discusses UTP and STP copper cables. Copper cables are subject to electromagnetic interference (EMI). UTP stands for Untwisted Pair and STP stands for Shielded Twisted Pair. These pairs are cable stands made of smaller individual cabling twisted together. The twists help to cancel out EMI. Shielded pairs also have a braided metal shield on top of the cables, which offers greater protection against EMI. 
+The lesson goes on to discuss the following unshielded twisted pair types:
+
+CAT 3---10mbs--16mhz--10BaseT environment
+CAT 5--100mbs--100mhz(155mhz asynchronous transmission mode)---100baseT environment
+CAT 5e--100mbs--100mhz(155mhz asynchronous transmission mode)--1000baseT environment
+CAT 6:--1gbs---250mhz(155mhz asynchronous transmission mode)---1000baseT environment
+CAT6a--10gbs---550mhz---10GbaseT environment
+
+We can't just replace the cables as there is a limit of each and every device like NIC and others has a fixed limit.
+
+
+
+
+
+
+
+
+
+
+Copper Twisted Pair--
+RJ45--Registered Jack 45 connector
+RJ45 cables have 8 color-coded wires, and the plugs have 8 pins and conductors. Eight wires are used as 4 pairs, each representing positive and negative polarity.
+
+Types--
+Standard Straight:
+same on both the ends
+connect different devices
+
+Crossover:
+568A->568B
+Same devices are used to connect
+
+
+Connectors within a copper twisted pair
+
+This lesson covers connectors within a common twisted pair; these include:
+
+Registered Jack 45 (RJ45): they are of three types
+Standard Straight
+Crossover
+T1 crossover
+
+Registered Jack 11 (RJ11): used by telephone wires.
+
+
+
+
+
+
+
+Media Converters and BPL---
+
+Media convertor--used to translate signals from one mode to another
+Singlemode->Ethernet
+Multi-mode->Ethernet
+Fiber->Coaxial
+Singlemode->Multi-mode
+
+BPL--Broadband over powerline
+Use Existing Power infrastructure
+
+Types:-
+Access BPL-Over powerlines(from outside to the building)
+Inhouse BPL--in house(inside the walls)
+
+We send data through the powerlines
+Power lines are more noisy as compared to ethernet as these lines are actually meant for transferring the electromagnetic pulse(quality may vary)
+
+
+This lesson covers changing a light signal to an electric signals; media converters are used for this purpose. There are two types of media converters: single mode and multimode. This lesson also covers Broadband over Power Line (BPL). It uses an existing power infrastructure and uses the cabling to send data packets. There are two types of BPL: Access and in house.
+
+
+
+
+
+
+
+
+Patch Panel and 110 Block--
+Patch Panels-
+Connection blocks
+Connect switch cables/connections
+ceiling cable->patch panel->switch
+
+110Block
+Network version of 66 block(phone)
+Terminate cables
+Network Connections
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3.3
+Wireless Standards: Frequencies (part 1)--
+wireless standard 802.11
+802.11a--54mbs--120m--5ghz
+802.11b--11mbs--140m--2.4ghz
+802.11g--54mbs--140m--2.4ghz
+802.11n--300mbs--250m--2.4ghz,5ghz or both
+
+Frequencies-
+wavelength
+bands that are used to transfer data
+GHZ-is the no. of billion cycles per second
+2.4ghz--
+more range and more interference and less data
+5ghz--
+more data but less range and less interference
+
+
+
+
+
+
+
+
+Wireless Standards: Frequencies (part 2) – Channels--
+
+This lesson covers channels which are basically different decimal points on a frequency band. Channels allow us to have different access points even though devices are communicating on the same frequency. There are 14 channels in the USA and we have access to 1-11; while the rest of for military and government access. This lesson also discusses how to set up channels so interference doesn’t occur.
+Channel in 1,6,11 --Wap 2.4ghz
+5ghz--professional setup
+
+
+
+
+
+
+
+Wireless Standards: Channel Bonding and MIMO--
+Channel Bonding--
+Used in 802.11n
+It doubles the wavelength to increase the speed
+Viewed as two channel sets
+
+MIMO-Multiple input/multiple output
+used in 802.11n
+different antennas for sending and receiving
+
+
+This lesson covers channel bonding and multiple input, multiple out (MIMO). Channel bonding allows for the bonding of two wireless channels. With multiple input, multiple output (MIMO) different channels send and receive.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3.4
+WAN, Circuit vs Packet Switching and Transmission Media--
+WAN-Wide area network
+Connect multiple lan's accross large geographical location
+Eg:-Internet
+
+Circuit Switching-
+Connect as needed
+No buffering
+eg:-a phone call
+
+Packet Switching-
+Share "Always on"
+Share Bandwidth
+Always on
+
+
+Transmission Media--
+Cable Types:
+	Phone lines
+	Cable lines
+	Fiber optic
+
+Wireless Types:
+Radiowaves/infrared
+Satellite 
+Cellular
+
+
+
+
+
+
+
+
+Dedicated Leased Lines – PPP--
+Mainly used as backbone in the organization where different nodes are connected to it
+Used in multiplexing(layer2)--use signal line for multiple streams
+mainly coaxial or fiber typically
+2 sending cables and 2 receiving cables
+
+
+
+
+
+
+
+Frame Relay and Asynchronous Transfer Mode--
+They use virtual circuits
+
+This lesson covers frame relay and asynchronous transfer modes. These are both technologies which allow us to take different lines and utilize them but not as dedicated lease lines, but as virtual circuits. Frame relay uses permanent and switched virtual circuits and has a maximum transmission based on lines. Asynchronous Transfer Mode also uses virtual circuits as well as cells.
+
+
+
+
+
+
+
+
+DSL (Data subscriber line)--
+Data at higher frequency
+SDSL-Symmetric DSL(1.6mbs upload/download)
+ADSL-Asymmetric DSL(8mbs download/1.544mbs upload)
+VDSL-Very high bit rate DSL(52mbs download/12mbs upload)
+
+DSL sends data at high frequencies over telephone lines.
+ 
+
+ 
+ 
+
+ 
+Cable TV--
+Data down cable lines
+Tranceivers-cable modem
+10mbs download/2mbs upload
+
+
+This lesson discusses another common infrastructure, the cable infrastructure. This sends data down cable lines and is used for cable TV connections as well as high-speed internet connections.
+
+
+
+
+
+
+
+
+Fiber Technologies--
+Uses light over glass or plastic rods to transfer data
+
+SONET-Synchronous Optical Network
+It carries other protocols like frame relay, ATM,Ip)
+Divided into Different OC(optical Carrier):-
+OC1-51.8mbs
+OC3-155.5mbs
+OC12-622mbs
+OC48-2.48gbs
+OC192-9.98gbs
+OC768-39.81gbs
+
+
+DWDM-Dense wavelength digital multiplexing
+Multiple signals over same cable
+signal=light wavelength
+Increase fiber carrying capacity
+
+PON-Passive Optical Network
+Point to multipoints(isp to different houses)
+One wavelength for download and one for upload
+Types:-
+OLT-Optical Line Terminal(at ISP office or at the destination like our home)
+ONU-Optical Network Unit(House near endpoint like fiber box)
+Splitters-Powerless non switching device which is used to split the fiber light wavelength)
+
+
+
+This lesson covers fiber technologies; which have the potential to surpass the speeds of all other wireless technologies. They do not transmit their signals over metal cables, rather they use light wavelengths over class or plastic rods to transmit signals and light of much faster then electrical impulses.
+
+
+
+
+
+
+
+
+Wireless Technologies-
+Satellite--
+Need to install Satellite Dish
+may have "wide" streams
+Slow Latency
+Latency--Delay in time as distance is much between point A to point B
+
+
+Wi-Max(Worldwide Interoperability for microwave access)
+Runs on IEEE 802.16
+Broadband Metropolitan Wireless
+Distance upto 31 miles
+speed of 70mbs
+
+
+Cellular--
+Internet to cell phone
+Mobile Hotspot
+3G-upto 14.4mbs
+HSPA+ (High speed packet access) (speed upto 168mbs)
+4G-upto 1000mbs
+
+The above speed are set by the telecom agencies at the government level
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3.5
+Network Topologies: Network Categories-
+Topology is the overview of how a network look like physically or logically
+
+This lesson covers different network topologies and network categories. A topology is a layout of a network both physically and logically. The different network categories include:
+
+Local Area Network (LAN): these tend to be inside offices and schools
+Wide Area Network (WAN): multiple local area networks like internet
+Personal Area Network (PAN): Bluetooth and Infared
+Metro Area Network (MAN): located in a college or city like wimax
+
+
+
+
+
+
+Network Topologies: Peer to Peer and Client Server-
+
+This lesson discusses Peer to Peer and client server topologies. 
+A peer to peer is a network in which clients talk to clients, they share files and folders. A peer to peer network is easy to set up and install but has limited scale performance.
+Easy Setup/Install
+Limited scale and performance
+eg:-Torrent and homegoup
+
+A client server allows clients to be connected through a server and it is seen in the domain. 
+The initial set up of a client server is harder, however it is more scaleable and provides for better performance.
+Need of domain controller
+provides for better performance
+Active Directory in Domain Controller 
+
+
+
+
+
+
+
+
+
+Network Topologies: Point to Point and Point to Multipoint--
+
+Point to Point--
+Connect one device to another
+onlink
+
+Multipoint--
+Single point to multiple points
+Used in multicasting
+This can pose a security threat as it can allow for one user to sniff out the traffic that is happening on the hub.
+
+
+
+
+
+
+Network Topologies: Mesh--
+
+This lesson discusses different types of topologies typically seen on a Local Area Network (LAN).
+When we are discussing topologies, essentially we are talking about the way computers are connected; what they look like and how they send and receive data. There is physical topology and there is logical topology. This lesson focuses specifically on mesh topology. 
+In mesh topology, some nodes are connected to more than one node and there are fully meshed and partially meshed set ups. 
+In fully meshed topology, there are computers connected to more than one node.
+In partial meshed topology, some computers are connected to all the computers, while some computers are just connected to one other computer.
+Mesh topology allows for your traffic room so more data can be passed on. 
+However, it can be expensive to set up and difficult to maintain
+
+
+
+
+
+
+
+
+
+
+Network Topologies: Ring--
+Nodes are connected to form loop
+data is transferred using token
+token is data indicating endpoint
+If the token is intended for the particular node then he can clear or reset the token to reply or if the token is not intended for you then the particular node will pass to the the other node
+And also there is only one token, so when it is empty then only someone can use it.
+
+Advantages:
+Less collissions
+
+Disadvantages:
+Data is passed to all computers
+One workstation down leading to all down
+
+
+
+
+
+
+Network Topologies: Bus-
+Nodes connected to a single cable
+T connector / 10base5 
+Signal sent using broadcast
+Terminal is present at the end
+
+An advantage of bus topology is that it has the least cost and set up; it is also good for small networks
+A disadvantage of bus topology is that it has limited length and if one node goes down, everything goes down.
+
+
+
+
+
+Network Topologies: Star--
+All nodes are connected together to a central hub in the form of star
+
+This lesson covers star topology.
+In star topology, all components connect to a central hub which manages all the data connections.
+
+Advantages of star topology include it being easy to set up and expand. Star topology also offers ease in troubleshooting. 
+However, a disadvantage of star topology is that is has a single point of failure; there is no other fallback method for the devices to communicate with each other.
+
+
+
+
+
+
+
+Network Topologies: Hybrid--
+
+This lesson covers hybrid topology.
+Hybrid topology is either a mixture of two topologies: peer to peer and client to server. 
+Hybrid topology could also involve a mix of mesh, bus, ring and star topologies. 
+
+An advantage of hybrid topology is that it is flexible and expandable and makes for better trouble shooting. Disadvantages to hybrid topology is that it can be costly and the setup is intricate and complex.
+
+
+
+
+
+
+Network Topologies: Multi-Protocol Label Switching--
+MPLS-Multi-Protocol Label Switching
+It is used to transmit over backbone
+it is in between layer 2 and layer 3
+It uses layer 2 protocols to transfer the information
+
+LER-Layer edge router(assigns 32 bit header MPLS)
+
+
+This lesson covers multi-protocol label switching (MPLS). Multi-protocol label switching allows multiple topologies to communicate together over the same connection. MPLS is used to communicate over a backbone and transmits over a layer edge router (LER).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 3.7
+LAN Technologies: Ethernet I-EEE:---
+802.3-ethernet cable
+ethernet cable is commonly used with UTP with RJ45 connector
+
+This lesson compares and contrasts different local area network (LAN) technologies.
+The most common type of LAN technology is the Ethernet I-EEE connection. 
+Ethernet connections are often referred to in the following terms:
+
+Standard ethernet-10mbs
+Fast ethernet-100mbs
+Gigabit ethernet-1000mbs
+10Gb ethernet-10gbs
+100Gb ethernet-100gbs
+The big difference between the different types of Ethernet is the speed at which they transfer information.
+
+
+
+
+
+
+LAN Technologies: Broadcast, Collision, CSMA/CD and CSMA/CA--
+Broadcast--
+send to all
+only our side of router
+Broadcast domain
+Broadcast storm is a  situation where because of broadcast it creates a endless loops
+
+Collision-
+Two devices transmitting simultaneously
+Data on the same line collides and it corrupts
+Collision domain vs broadcast domain
+
+CSMA/CD-
+Carrier sense multiple access/collision detection
+Carrier-sense multiple access with collision detection is a media access control method used most notably in early Ethernet technology for local area networking. It uses carrier-sensing to defer transmissions until no other stations are transmitting.In this as soon as device determines that there is a collision it will wait for a time period and then again it will retransmit
+
+CSMA/CA-
+carrier sense multiple access/ collision avoidance
+Carrier-sense multiple access with collision avoidance in computer networking, is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by transmitting only when the channel is sensed to be "idle".
+In this the data packet is not sent,instead an alert message is sent to others that "i am going to send the data in a minute" and if it doesn't collide with any other it sends the message but if it collides then it waits for a time period and then it again sends the alert message again to check that the network is idle and the only difference between CSMA/CD and CSMA/CA is that in CSMA/CD it sends the whole packet whereas in CSMA/CA it only sends the alert message.
+
+
+
+
+
+
+
+LAN Technologies – Bonding--
+This lesson covers the LAN technology known as bonding.
+If there will be having only one NIC and if it goes down then we can't access our web server so we bond the differnet NIC leading to more redundancy
+
+Bonding allows for combining multiple Network Interface Cards (NICS). 
+Bonding also allows for increased bandwidth and redundancy 
+Bonding is also useful for servers.
+
+
+
+
+
+
+
+MDF, IDF, Demarc and Demarc Extension--(image)
+MDF-Main Distribution Frame(like a headquarter)
+Main Network Rack
+Manages IDF's /Demarc
+
+IDF-Intermediate Distribution Frame(like on branch/floor)
+Network racks connect to backbone
+connect additional network segments
+giving connections to each node on the floor
+backbone is like a information highway
+
+Demarc--
+point where ISP enters into the building
+Ownership transfer from ISP to network analyst of the organization
+
+Demarc Extension--
+Extension from Demarc to Main distribuiton frame 
+It can be when MDF is at different location
+
+
+
+
+
+
+
+
+Smart Jack and Vertical Cabling vs Horizontal Cross Connect--
+This lesson discusses different network components. 
+
+One of these network components is a smart jack. 
+A smart jack is a device located at the demark point and is common in T/E and PRI. 
+Smart jacks transfer from ISP protocol to internally routable protocol. 
+
+This lesson also covers vertical cabling and horizontal cross connects. 
+Vertical cabling is backbone (as it goes from floor to floor)
+whereas horizontal cross connects the Intermediate Distribution Frame (IDF) to the hubs, switches and workstations.
+
+
+
+
+
+
+
+
+CSU/DSU--
+channel service unit/ digital service units
+helps to link from our demarc point to ISP office to clear the signals
+These units sit on the edge of the network near the demark point. 
+The channel service unit/ digital service unit manages errors, establishes timing and prevents echoes.
+
+
+
+
+
+
+
+
+
+
+
+Module 4.1
+Network Appliances: Additional Network Functionality--
+
+This lesson gives an overview of network appliances which provide additional network functionality. These network appliances include:
+
+Load balancer: distributes the workload
+Proxy server: privacy/caching
+Content filter: protection blocking
+VPN Concentrator: connects externally
+
+
+
+
+
+
+
+
+
+
+Network Appliances: Load Balancer--
+Distributing workload across devices
+->DNS round robin
+->HTTP round robin
+
+Load balancer transparently distribute so that the end users feel that they are being responded from only one place
+There are many algorithm to distribute the workload:-
+Round Robin,Least robin time(those load balancer which take less time to response the request),
+weighted round robin(provides request on the basis of their weight to handle the request.If one load balancer is having 30 computing power to response then it will get 3 request and another is having 20 then it will get 2 request and so on.)
+
+Load Balancers may also do:-
+DOS Protection
+Caching the file in the local memory etc.
+
+
+
+
+
+
+
+
+
+
+Network Appliances: Proxy Server--
+Proxy means to go on behalf
+Proxy is in between our computers and internet
+It leads to additional privacy
+It helps in content filtering
+Increased Performance (Caching) 
+
+
+
+
+
+
+
+Network Appliances: Content Filter--
+Blocks traffic based on rules/filters
+Traffic need to flow through the content filter device
+May evaluate in different ways
+
+Used in many different Environments:-
+Parental Control
+Office Productivity
+
+Devices like hardware,software and cloud based
+
+
+
+This lesson discusses the content filter. A content filter is a network appliance that is able block traffic based on rules and filters. Traffic needs to flow through a device and it can be evaluated in different ways such as keywords in the URL or the category of web sites. Content filters can be used in many different environments such as parental controls and office productivity to prevent employees from spending too much time on certain web sites. Content filters can be hardware, software or cloud-based.
+
+
+
+
+
+
+
+
+
+
+Network Appliances: VPN Concentrator---
+Connection point for remote users
+Steps:-
+End users initiate VPNclient
+connect to public internet
+Encrypted tunnel to vpn concentrator
+Concentrator authenticates
+
+Provide encryption and prevent from exposing Remote access server
+Standalone or implement into edge router(we can add additional device or rather latest router comes up with these features)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 4.2
+Cable Tester, Toner Probe, Cable Certifier and Butt Set--
+
+This lesson discusses using appropriate hardware tools to troubleshoot network productivity. These hardware tools consist of:
+
+Cable testers: verify connection and the correct pin out(check out that cable is correct or not); may have a remote tester.
+Toner probes: trace wire and cable, generator produces tone and the probe listens for tone.(tool to find out the end of the cable)
+Cable certifiers: verifies bandwidth and frequency; tests many types of cables
+Butt sets: Tests plain old telephone system (POT) connection; connects to line then calls looking for a signal. Butt sets are used when installing and Internet connection.(at demarc point)(checked by an ISP provider executive)
+
+
+
+
+
+
+
+
+
+Crimper, Punch Down Tool, Protocol Analyzer and Loop Back Plug (part 1)--
+
+This lesson continues discussing the use of appropriate hardware tools to troubleshoot network productivity. This lesson focuses on the following tools:
+
+Crimper: used for cable termination, but it can also be used to cut and strip cables. Crimpers can be used on Ethernet, coaxial and fiber cables. Crimpers can also correct terminating ends and wire sequence. When setting up and crimping a cable, leave as little excess as possible outside the connector as that can cause interference.
+(a sort of cutter to cut the cable and again reunite the wires with the connector)
+
+Punch down tool: can terminate connection into a block or patch panel or a keystone. When using this tool, be careful of the blade size and the cutting edge as different size tools are meant for different size cables.(it is just used to punch down the cable like a stapler in the keystone)
+
+
+
+
+
+
+
+
+
+
+
+Crimper, Punch Down Tool, Protocol Analyzer and Loop Back Plug (part 3)--
+
+This lesson discusses the protocol analyzer and the loop back plug.
+The protocol analyzer is used to plug into the network and analyze the traffic. The protocol analyzer is a hardware device and it can be installed on a laptop or it can be a stand-alone device. It is like being able to look inside a wire and see what’s going on. 
+
+A loop back plug is a device that sends cables back and uses software to compare sent and received signals.(if there is any problem in the NIC to send and receive the data)
+
+
+
+
+
+
+
+
+
+TDR, OTDR, Multimeter and Environmental Monitor--
+
+This lesson covers the following tools:
+
+Time domain reflectometer (TDR): device which sends signals and listens to reflections back. TDRs estimate cable length; find cable faults and splices.(it is used to find the exact point in the cable where there is an error)
+
+Optical time domain reflectometer (OTDR): TDR used for fiber(as light is used to transfer data)
+
+Multimeter: measures and checks electricity for resistance, current, voltage and continuity. whether it is working properly or not.The current is working properly or not
+
+Environmental monitor: monitors the environment for humidity, temperature and air particles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 4.3
+Protocol Analyzer, Throughput Testers and Connectivity Software---
+
+This lesson discusses using appropriate software tools to diagnose network connectivity. Software tools can sometimes be even more informative than hardware tools when troubleshooting issues with network connectivity. This lesson discusses the following tools:
+
+Protocol analyzer: monitors network traffic or a packet capture software
+computer and span port
+analyzing network issues
+
+Throughput testers: simulates network traffic and limit the network traffic to a stress level
+
+Connectivity software: provides continuous or period testing if a device is online
+
+
+
+
+
+
+
+
+
+Command Line Commands (part 1) – Using the ping and tracert commands--
+ping command and -t for the unlimted break
+
+This lesson discusses using the ping and tracert commands in the Windows command line to troubleshoot network issues.
+
+Ping: used to ping a system and get a response back; simple to use.
+Tracert: cam be used to discover what’s causing a ‘bottleneck’ on a network(-d for do not resolve Ip address)
+
+
+
+
+
+
+
+
+
+Command Line Commands (part 2) – Using the ipconfig and the NS lookup commands--
+
+ipconfig:-
+/release--release the local address
+/renew--renew the address from the dhcp
+/all--get all the information
+/flushdns--deleted the dns local cache
+
+nslookup:-
+forward lookup--domain to ip address
+reverse lookup--ip to domain address
+
+
+
+
+
+
+
+
+Dig, Arp, nbt stat and netstat--
+dig:-for linux/unix
+a- lookup Ip
+mx- mail server
+ns--name server
+
+arp:-
+-a :display entries
+-v:detailed info(verbose)
+-d:deletes specified host
+
+nbtstat -a for the remote connections being made till date
+
+netstat -active connections for the tcp and udp communication or services running
+-b for the process name
+
+
+
+
+
+
+
+
+route command--
+print- to print the route tables (onlink means that we can directly connect to it and if it is not there than the default gateway is used to connect to it)
+-f :to clear all the entries
+add-add a route table
+change--change the route table
+delete--delete the route table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 4.4
+SNMP, SNMPv2 and SNMPv3--
+Simple Network Management Protocol
+This lesson is about using the appropriate resources to analyze network traffic. This lesson covers the following resources:
+SNMP v1:
+SNMP Manager: data collection, can configure devices or pull information
+SNMP Agent: software on device: use on switches, printers and servers, agent can monitor or send data
+
+
+SNMPv2: Performance improvements but complex security, not widely adopted
+SNMPv3: The highest security, allows for username authentication or md5 or sha algorithm, verifying that data is unchanged and encryption is there
+
+
+
+
+
+
+
+
+
+Syslog and Event Viewer--
+
+This lesson covers the syslog and event viewer.
+The syslog allows devices to send alerts and errors to a syslog server. 
+Messages within the syslog specify which program logged the error, the severity and the error itself. 
+Messages can be spoofed. 
+The syslog can use software to parse and analyze messages.
+Syslog is a way for network devices to send event messages to a logging server – usually known as a Syslog server. The Syslog protocol is supported by a wide range of devices and can be used to log different types of events.
+ 
+
+The event viewer allows us to access logs an events and can be viewed on local and remote computers and servers. 
+In the event viewer, custom logs can be set up, specifics tasks can also be audited.
+
+
+
+
+
+
+
+
+
+
+General Logs, History Logs, Traffic Analysis and Protocol Analyzer--
+This lesson examines which logs can be found on a Windows system. These logs include:
+
+General: system related events to view like application,security and system logs and provide with information and warning
+
+History: indicate history, typical of Internet browsers, additional ones can be configured
+
+Traffic Analysis: analyzes network traffic like wireshark, netstat for different connections
+
+Protocol analyzer: Analyzes traffic, provides insight.we can analyze the data using their IP and ports and the services running
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 4.5
+Wire Schemes, Cable Management, Network Maps and Documentation--
+
+This lesson discusses different types of network documentation. Documentation is essential for maintaining the integrity and management of a network. This lesson focuses on the following types of documentation:
+
+Wiring scheme: wiring infrastructure information such as PIN standard, types of cables and cable maps and diagrams.
+
+Cable management: neatness/management,physical management of cabling, helps to make them visually appealing and helps with identification which leads to cooling and safety
+
+Network maps: physical and logical layouts--ip address,devices,vlans, topology and port maps and in conjunction with wiring scheme
+
+Documentation: network topology(networking team), wiring schemes,device configs,port layouts, server roles(given to system analyst), device logins, firewall rules(given to security team)
+
+Take nothing for granted.Write each and every thing
+
+
+
+
+
+
+
+
+Asset Management, Baselines and Change Management--(documentation)
+
+This continues covering different types of network documentation. This unit covers:
+
+Asset management: person manages and keeps accountability, device serial numbers,database to track devices, login information for devices, keep devices secure and up to date, track warranties
+
+Baselines: Reference point for normal functions, Network baselining is the act of measuring and rating the performance of a network in real-time situations. Providing a network baseline requires testing and reporting of the physical connectivity, normal network utilization, protocol usage, peak network utilization, and average throughput of the network usage., network traffic and data sent/recieved and performance monitor(cpu,disk,memory performance)
+
+Change management: how to handle modifications and update all the cables in the particular enterprise
+An approval cycle should be there,test implementation and documentation and acccountability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 4.6
+Latency Sensitivity and High Bandwidth Apps--
+
+Latency(delay) Sensitivity--
+certain services more susceptible to latency like VOIP and RDP(Remote Desktop Protocol)
+Methods for optimizing the network to help with the latency susceptible
+
+High Bandwidth apps--
+Applications that use a lot of network traffic and apps like video streaming, file streaming and host streaming and cloud applications and watch these high bandwidth apps on our network who is using it
+
+
+
+This lesson discusses different methods and rationales for network performance optimization. 
+When optimizing a network; it is important to assess a system for latency sensitivity.  Certain services are most sensitive to latency such as VoIP, video and RDP. Latency sensitivity means a service is affected by a slow connection, such as when a video pauses to buffer or when there is a long during a Skype call. High bandwidth applications might be latency sensitive, but they use a lot of network traffic. Services such as video and music streaming and cloud applications take up a lot of room on the network.
+
+
+
+
+
+
+
+
+Quality of Service and Traffic Shaping--
+
+Quality of Service--
+Help ensure priority of latency sensitive packets(more priority to like live streaming as compared to file downloading)
+Can be built into network devices
+
+Traffic Shaping--(Network Throttling)
+can delay less important traffic
+make the most of available bandwidth and use in other data stream
+may be on user end or on ISP side
+
+
+
+
+
+
+
+
+Load balancing--
+Distribute workload accross multiple devices
+be as transparent as available in connectivity as if one server response faster than other and the same content should be visible to the user
+
+Functionality--
+Round robin--one request to server A and one request to Server B and one request to server C and then again one request to server A in the roundshape
+
+Least connections--load balancing will look to each server and see how much connection they are serving and the least once gets the request
+
+Fastest Response time--load balancing sends the request and the fastest once to respond, get the request
+
+Weighted round robin--server who can response request more then it is given more weight and then load balancer provides him the request
+
+
+
+
+
+
+
+
+Uptime--
+
+This lesson discusses uptime. 
+Uptime is the percentage of time services are available. 
+Needs can vary(it means what type of service we are providing) and a certain percentage of uptime is included in the Standard Lease Agreement (SLA). (minimum amount of percentage of time)
+A strong uptime is needed so people are able to use the network to work and accomplish their tasks. 
+
+A strong uptime consists of the following components:
+Redundancy
+Power backup
+Secondary Internet connection
+Backup sites
+
+
+
+
+
+
+
+
+High Availability and Caching Engines--(uptime)
+
+High availability--it means that we will be providing high uptime but we will be down by this percentage of time
+Calclulate allowed downtime:
+(one nine)90% uptime->36.5 days/year will be down->16.8hrs/week downtime
+(two nine)99% uptime->3.6days/year down->5.04hrs/week downtime
+(three nine)99.9% uptime->8.76hrs/year down->10.1min/week downtime
+
+
+
+Caching Engines--
+Devices that save frequently requested resources
+Load balancers,proxy servers and local cache
+It helps to improve connection
+Reduce strain
+
+
+High availability is used to calculate allowed downtime and allow for high uptime. This is based on a business needs and the Standard Lease Agreement (SLA). High availability is measured in percentages and shows the amount of time a network is available. Another method for maintaining high uptime is caching engines. Caching engines allows a network at different points to save frequently used resources so they are available when needed. Caching engines also results in improved connection speeds
+
+
+
+
+
+
+
+
+
+Fault Tolerance and CARP--
+Fault Tolerance-
+Failover device available
+Preferably automatic
+less storage than our primary devices
+network devices like routers, switches,cables and NIC's
+UPS, data backups,cold/hot backup site
+
+
+CARP--common access redundancy protocol
+multiple hosts share ip
+Transparent fault tolerance
+each device has shared Ip address and private ip management address
+can be failover and load balancer
+
+
+
+This lesson discusses methods which are necessary to maintain a high uptime in a network. Uptime is the time that services are available on a network. This lesson focuses on the methods of fault tolerance and Common Access Redundancy Protocol (CARP). Fault tolerance is essentially the act of having fail over devices available, preferably thee devices are automatic such as routers, switches and cables. In CARP, multiple hosts share the IP. CARP allows for transparent fault tolerance and each device has a shared IP and personal management IP. CARP can be fail over or load balance.
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5.1
+Encryption and Device Signal / Placement – A History of Implementing WiFi Security Measures---
+
+Encryption--
+WEP-Wired Equivalent Privacy
+->Original Protocol
+->Easily Broken
+
+WPA-Wired Protected Access
+->Temporary enhancement
+->Used TKIP-Temporary Key Integrated Protocol
+->Mid-level Security
+
+WPA2-Wired Protected Access(Pre shared Key)
+->802.11
+->Uses AES-Advanded Encryption Standard
+
+WPS-Wifi protected security
+
+
+
+This lesson covers background knowledge in implementing wireless security measures. The most important aspect in creating a secure wireless network is encryption. Wireless encryption prevents a wireless network from being open to everyone. When encrypting, make sure the data that is being sent over the network is not in clear text, that it is encrypted so it stays secure. The original encryption protocol was Wireless Equivalency Protocol (WEP) and it was easily broken and it is not recommended. WiFi protected access (WPA) replaced WEP and used Temporal Key Integrity Protocol (TKIP) to encrypt data and was able to provide mid-level security but it can still be cracked. WPA gave way to WPA2 and uses the advanced encryption standard. WPA2 is approved in the USA for top secret level data trans-versing a network and is the standard used today. Wireless Protection Security (WPS) is the latest trend and allows for easy connection at the press of a button on a device but it is easily broken as WPS enabled routers do not use a very long encryption key.
+
+
+
+
+
+
+
+
+Device Signal / Placement--
+
+Place and configure signal strength to prevent network bleeding outside
+
+This lesson covers device signal and device placement and how they have a role in creating a secure WiFi connection. This is not as important as encryption but it is still a necessary concept. Device placement has to do with where devices are placed in a WiFi network and how strong the signal needs to be. The wireless signal needs to be prevented from bleeding out of the office where it can be vulnerable to hackers who might be sitting in the parking lot with a laptop trying to hack into the network. Device placement is integral to allowing employees to access the network all the while keeping important information safe.
+
+
+
+
+
+
+
+
+
+WAP settings--
+SSID-Service set identifier
+Name used by WAP
+May want to turn off broadcast
+At least change from default
+
+DHCP-Dynamic host configuration protocol
+Leases ip address
+may want to disable
+we can statically fix the ip address
+
+MAC Filtering--
+Every NIC has a mac address
+MAC filtering only allows desired devices to connect to network
+can be spoofed
+
+
+This lesson covers how Wireless Access Point (WAP) settings contribute to a secure WiFi network. Within the WAP settings are the Service Set ID (SSID). This is the name used by WAP and it can be made more secure by turning off broadcast and changing the name from default to safeguard information. Also within the WAP settings is the Dynamic Host Configuration Protocol (DHCP) which leases IPs to end clients. Disabling DHCP makes it harder for people to connect to a wireless network since they cannot come up with a valid wireless IP range. Media Access Card (MAC) filtering is also a way to make WAP settings more secure. Each Network Interface Card has a MAC and using filtering allows only devices that are on the Access Control List (ACL) to connect. In addition to these methods, it is also important to check log activity to see if there is anything out of place, and learn it all in this lesson about WAP settings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5.2
+Access Control List--
+List of allowed users based upon mac address,ip address etc.
+list of people to allow connectivity
+
+Mac filtering--(layer 2)
+->Based upon mac address
+->can be spoofed
+->Manually record and set the rules
+
+Ip Filtering--(Layer 3)
+->Filter by Ip address
+->can be spoofed
+->set statically and manually allow devices
+
+Port Filtering--(layer 2 and 3)
+->Port access control list filter is based on the traffic that is ingress and outgress(inbound and outbound traffic)
+->Access Ports and Trunk Ports
+->Disable Unused ports
+
+
+
+
+
+
+
+
+
+Tunneling and Encryption--
+VPN-Virtual Private Network(image)
+Tunneled or encrypted connection over the public network
+can essentially on a private network
+
+Types of VPN connections--
+Client to Site connection:
+	Remote access VPN
+	May utilize special client software
+
+Site to site:
+	Connect two sites(like branch office to headquarter)
+	Cheaper than dedicated leased lines
+
+
+
+
+
+
+
+
+Virtual Private Networks (VPNs) Explained--
+
+This lesson covers the protocols necessary for form a Virtual Public Network (VPN). These protocols include:
+Secure Socket Layer (SSL) VPN: web browser based VPN (HTTPS), uses certificate for mutual authentication, most replaced by TLS
+
+Transport Layer Security (TLS): More common HTTPS, certificates
+
+Transport Layer Security 1.2 (TLS1.2): enhanced security, tighter security /hashing checks
+
+Peer to Peer Tunneling Protocol (PPTP): Older dialup protocol, adds client on virtual node and has weak encryption. It is not recommended.
+
+Layer 2 Tunneling Protocol:Carries layer 2 traffic by encapsulating it and it has no encryption by itself but utilizes IPsec, RADIUS and TACAS +.
+
+
+
+
+
+
+
+
+IPSec / IP Security--
+
+IP Security, also known as IPSec is the protocol that allows the encryption of layer 3 communications with point to point connections. 
+
+IP sec uses a number of sub protocols:
+Encapsulated Security Payload (ESP): encrypts content with symmetrical algorithm(algorithm that is same on both the ends i.e. encrypt and decrypt in the same way using algorithm)
+Authentication Header (AH): creates checksum(a digit representing the sum of the correct digits in a piece of stored or transmitted digital data, against which later comparisons can be made to detect errors in the data.) and hashes a data packet
+IP Comp/IP Payload Compression: compresses IP payload
+Internet Key Exchange (IKE): negotiates shared secret. 
+
+In transport mode, it encrypts data while in tunnel mode it encrypts packets.
+
+Encryption is tagged just before the packet
+
+Internet Security Association on Key Management Protocol (ISAKMP): This is the procedure that works with IPSec Communications. It exchanges keys and provides security association and then creates the tunnel.(between the client and the remote server. It helps to create IPsec tunnel and shares the keys)
+
+
+
+
+
+
+
+
+Remote access Protocols--
+
+This lesson covers remote access protocols. These protocols can work over a local area network (LAN) as well as on a VPN. These protocols include:
+
+Remote Access Server (RAS): This is the server role providing remote access into a network; it may be on a parameter or forward data from VPN concentrator.
+
+Remote Desktop (RDP): Peer to peer connectivity for another computer and appropriate permissions are needed.
+
+Point to Point over Ethernet (PPPoE): encapsulate PPP packet in Ethernet frame and connect multiple users to Internet through DSL; set up to connect to ISP and provide username and password.
+
+Independent Computing Architecture (ICA): This uses Citrix protocol and is a platform remote application connection. The applications run on one computer to be controlled by another computer.
+
+
+
+
+
+
+
+SSH (Secure Shell)--
+
+This lesson covers Secure Shell (SSH). 
+Secure shell allows us to have a secure connection from user machine to a remote machine. 
+Secure shell uses public key encryption as well as data communication,command line login and other remote management.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5.3
+What is Authentication?--
+
+This lesson covers different methods for user authentication. 
+User authentication is simply proving who you are. 
+There are many methods that can be used for authentication and it is not just for confidentiality; 
+authentication can also be used for non-repudiation purposes. Repudiation is when there is an issue and someone tries to say they did not cause it so authentication holds people accountable.(that wasn't me) 
+
+Factors of authentication include:
+Something you have(badge,idcard and physical objects like rsa token)
+Something you know(knowledge like password,pin number)
+Something you are(biometric means,facial recognition)
+
+
+There is also multifactor/two factor authentication:
+Using more than one factor
+
+Badge and Personal Identification Number (PIN):something you have and something you know
+Fingerprint and password:something you are and something you know
+
+
+
+
+
+
+
+
+Single Sign On--
+
+This lesson covers single sign on. 
+Single sign on is the ability to pass on authentication to multiple servers without having the re-enter information multiple times. 
+
+However, many applications which utilize single sign on require re-entering credentials when accessing sensitive information, such as the part of the application where you can change your password. 
+
+While single sign-on allows for great ease of use, it is still important to be careful how credentials are stored.
+
+
+
+
+
+
+
+The algorithms of encryption--
+
+This lesson covers encryption. 
+Encryption is the process of taking data that is in clear text and changing it into cypher text. 
+
+Cypher text is the goal, what we want to send over the network and where we want to store sensitive data. 
+
+Encryption and decryption is accomplished via mathematical algorithms, many of which are based randomly generated prime numbers. 
+
+Typically, the algorithm stays the same, it’s the key that changes.
+
+
+
+
+
+
+Symmetric Encryption and Asymmetric Encryption--
+
+This lesson covers the two main encryption types: symmetric encryption and asymmetric encryption. 
+
+Symmetric encryption is when the same key is used to encrypt and decrypt. 
+When using symmetric encryption, you must be able to trust the other party and find a way to get them the pre-shared key. 
+Symmetric encryption is also good for non-repudiation. 
+
+
+
+Asymmetric encryption differs from symmetric encryption in that it has a public key and a private key. 
+The public key is the one which is widely distributed and given out to whomever needs it and is used to publicly encrypt data. (based upon PKI-public key infrastructure)
+However, the private key is secret and yours alone and is used to decrypt data.
+
+
+
+
+
+
+
+
+Data Hashing--
+
+This lesson covers data hashing. 
+Data hashing is a one-way mathematical algorithm which allows us to obtain a string of numbers like a fingerprint that cannot be reversed. 
+
+Data hashing allows for file verification and then we can check that the file has been changed or not and helps with Public Key Infrastructure (PKI).
+
+
+
+
+
+
+
+
+Overview of Public Key Infrastructure (PKI)--
+Makes use of Asymmetric encryption to encrypt transmissions
+
+CA-Certificate Authority
+Used in centralized key management to create/ distribute keys
+A Certificate Authority (CA) (or Certification Authority) is an entity that issues digital certificates. The digital certificate certifies the ownership of a public key by the named subject of the certificate
+
+This lesson covers Public Key Infrastructure (PKI). Public key infrastructure is what makes use of asymmetric encryption to encrypt transmissions. In addition to assisting with encryption, public key infrastructure allows us to sign electronic documents and verify and individual is who they say they are. Public Key Infrastructure is not only a very strong tool for user authentication and encryption but is also a very good tool for non-repudiation.
+
+
+
+
+
+
+Overview of Kerberos--
+This lesson covers Kerberos technology. 
+Kerberos is considered the ‘three-headed guard’ of a network. 
+
+The three heads of Kerberos include
+The key distribution center
+Authentication service
+Ticket granting service
+
+Kerberos is found in a Windows domain and relies on a trusted third party who hands out tickets which are used to authenticate.
+
+
+
+
+
+
+
+Authentication, Authorization and Accounting--
+
+This lesson covers Triple A servers:
+Authentication: proving who you are(eg:-driving license)
+Authorization: what you are allowed to access(only things you are allowed to access)
+Accounting: Tracking account use and actions(how many times we login and the actions performed while we are login)
+
+
+The triple A server provides a central repository for user accounts, passwords and permissions to be checked against another protocol.
+
+
+
+
+
+
+Remote Authentication Dial in User Service (RADIUS)--
+
+
+This lesson covers Remote Authentication Dial in User Service (RADIUS). 
+RADIUS is the standard seen in most domain environments. 
+Dial user and authentication and wifi/vpn user authentication using UDP
+->The RAS acts as the RADIUS client
+->Server providing AAA is the RADIUS server
+
+RADIUS server-> Radius client (message of accept,reject or challenge packet)
+It is what it used in order to dial in and authenticate users over VPN as well as WiFi connections. 
+
+RADIUS authenticates via a UDP connection and the "password is only encrypted in the authentication packet" and provides more accounting, so account use and actions can be tracked.
+
+
+
+
+
+
+Terminal Access Controller Access Control System (TACAS)--
+
+This lesson covers Terminal Access Controller Access Control System Plus (TACAS Plus). 
+TACAS is a CISCO proprietary system utilizing transmission control protocol (TCP).  
+In TACAS, the entire authentication packet is fully encrypted and allows us to set up our own CISCO independent servers and databases.
+
+
+
+
+
+
+
+
+
+Network Access Control--(image)
+Permit or deny access to the network
+
+Posture Assessment:-
+Checks the client or machine against a set of requirements
+Antivirus or security updates, that are they updated or not
+
+802.1x:-
+IEEE protocol which requires devices to authenticate before network access
+->Supplicant-client computer/device
+->Authenticate-802.1x switch 
+->Authentication server--RADIUS or TACAS
+
+Remediation Network(RN)-It is the network that we are allowed when we fail the posture assessment and we are not allowed to connect to the main network, so we are bought up here, to fix the security updates and the antivirus scans so that we are connected to the main network.
+
+
+
+
+
+
+
+
+
+
+Challenge Handshake Authentication Protocol (CHAP) and Extensible Authentication Protocol (EAP)--
+
+CHAP-Challenge Handshake Authentication Protocol--
+One way authentication to the remote desktop connection
+Does not send password in the clear text
+Process-Server sends the challenge to the client for the remote desktop connection and then the client takes the challenge and his  password together and passes it to his hashing alogrithm to get the hash value and then sends the hash value to the server which server checks in his records and then the connection is being established
+CHAP does not verify end point(server does not authenticate itself)
+
+MS-CHAP: Microsoft CHAP:
+It works with 2 way authentication
+it comes in two versions, MS-CHAPv1 and MS-CHAPv2(works on vista and above)
+
+
+
+
+
+
+EAP-Extensible Authentication Protocol:-
+It is a framework for authentication
+Standardization authentication method
+Configure devices to authenticate to our network authentication method
+
+Many different types of EAP--
+wpa2,802.1x,EAP-TLS
+Runs over data-link layer without the need for IP address
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5.4
+Wireless (part 1) Common Threats, vulnerabilities and mitigation techniques--
+
+Wireless--
+
+War Driving:-
+Driving around looking for wifi
+Implement strong wirless security
+
+War Chalking:-
+Writing wireless network info outside the business headquarters(drawing symbols)
+Implementing good wireless security
+
+WEP/WPA cracking:-
+Weakness in encryption key which can allow cracking into wifi
+good password in WPA2
+
+
+
+
+
+
+
+
+
+
+
+Wireless (part 2) ﻿Rogue Access Points--
+Wild access point intended for users to connect to so that their traffic can be captured
+
+Evil Twin:-rogue point/same SSID
+Scan for unauthorized wireless access points
+WIPs-Wireless Intrusion Prvention system for rogue acess points
+Don't connect to WAP that you do not recognize
+
+
+
+This lesson covers rogue access points. Rogue access points are set up for users to connect so traffic can be captured and sniffed. However, they can be very problematic as they allow for rogue devices to connect to a network which can create issues for devices that are already connected to the network. It needs to be made clear that people are not allowed to bring their own personal devices and set up their own access points on a network. Issues can be mitigated by not connecting to devices you don’t recognize or open wireless access points.
+
+
+
+
+
+
+
+
+Attacks (part 1) Non Wireless Attacks--
+DOS(Denial of service):-
+Attack on web services and resources
+Block host generating services
+
+DDOS-Distributed denial of service attack
+Multiple host performing DOS
+Identify traffic signal/ block
+
+Man in the Middle Attack-
+Attacker listens/captures and impersonates
+check who you are connected to, Mutual authentication
+
+
+
+This lesson covers non wireless attacks. Non wireless attacks are actual attacks against a network. One such attack is a Denial of Service (DoS) which is an attack on services and resources and blocks host generating traffic. There is also a Distributed Denial of Service (DDoS). These are harder to fix as multiple hosts are performing DoS. Another type of attack is a Man in the Middle Attack. In this kind of attack, the attacker listens, captures and impersonates a user which allows them to pass on false certificates and capture data that is out on an HTTPS web page.
+
+
+
+
+
+
+
+
+Attacks (part 2) Social Engineering and other attacks--
+Social Weakness:-
+Exploiting weakness in people
+User training/policies
+
+Virus--
+Malicious software code
+Anti-Malware,Ips/IDS, User Policies
+Remediation policies activated
+
+Worms--
+Self Replicating code(does need to be attached to an executable file) , can be polymorphic(keeps changing its code and hard down to pin)
+
+Buffer Overflow--
+Data into other sections of memory
+can cause execution of Arbitary code
+
+
+
+
+This lesson covers social engineering. This exploits weakness in people which allows attackers to find vulnerabilities. There has to be mandatory user training so employees know policies on things such as leaving a computer unlocked, giving out passwords or opening doors for unknown people. Other forms of attacks are viruses, worms, and buffer overflow. Companies install anti-malware on computers to mitigate viruses as well as implementing user policies such as do not use unknown devices such as a USB just found on the floor. Worms are dangerous to networks because they can replicate quickly and take down a network by performing a constant denial of service. A buffer overflow is a vulnerability in a program that can write more program than can fit into a program so instead of fault finding, there is an overwriting after a buffer than can cause a crash.
+
+
+
+
+
+
+
+
+Traffic Sniffing, FTP Bounce and Smurf--
+
+Packet Snififng--
+Capturing network traffic
+Secure wifi,eliminate hubs, encrypt traffic
+
+
+FTP Bounce--
+Connect to FTP server with the PORT command to specify port on another client //not working now
+Send data to specific open port to the client from the attacker by bouncing the data from attacker to the ftp server and then to the desired client
+
+SMURF--
+Send forged ICMP packet into network specifying broadcast receipent
+DOS
+Mostly Eliminated
+Routers do not broadcast messages so this attack is mitigated 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Module 5.5
+Software vs Hardware Firewalls, Port Security and Additional Features--
+
+Firewalls--
+Software:
+Installed on clients
+Inexpensive but vulnerable
+
+Hardware:
+Physical Devices
+More Robust/configurable and more expensive
+
+We should use the combinations of both
+
+
+Port Security--
+Security by modifying traffic/access based on ports
+TCP/Ip Ports(logical ports) and physical ports(where we plug on the cables)
+
+
+Firewall Additional Features--
+firewall can be built into Routers/switches
+Two firewalls can act as VPN concentrator and built a vpn tunnel
+Firewall can act as content filter
+Firewall performs as IDS/Ips/IDS
+
+
+
+
+
+
+
+
+Stateful Inspection vs Packet Filtering and Firewall Rules---
+
+This lesson covers stateful inspection versus packet filtering. 
+Packet filtering is just based on the header. 
+However, the stateful firewall inspects traffic and only allows initiated traffic in. 
+
+
+This lesson also discusses firewall rules, specifically inbound versus outbound. 
+Block/allow based on ports,protocols,ip address and mac address
+
+An inbound firewall rule is one that dictates what is allowed from the public network into the private network.
+
+Outbound traffic is what is travelling from the private network to the public network. 
+Outbound rules are more trustworthy than inbound rules. 
+
+Inbound rules also have an implicit deny, which allows a packet to be denied if a rule is not known. 
+(if you are on this list, then you are not allowed)
+
+Finally, Access Control Lists (ACL) can permit or deny traffic and are specified based on IP/Port/MAC source or destination.
+
+
+
+
+
+
+
+
+
+
+
+NAT/PAT and DMZ-DeMilitarized Zone--
+
+This lesson covers Network Access Translation and Port Address Translation. 
+Network address translation (NAT) converts an internal IP address to an external IP address. 
+The traffic is forwarded to the private IP and web servers. 
+
+Port address translation tracks IP/Port numbers and a private IP is assigned to a "public IP and port". 
+eg:16.15.18.19:81---192.168.10.15
+
+
+The demilitarized zone (DMZ) creates an area for public use with a public facing firewall than is less restrictive then the private. It is the place for VPN concentrators and web servers.
+In this area, we handle the public facing devices so that they only contact to them and not out private network
+Located on the perimeter on our network
+DMZ is the area between the two firewall i.e public facing firewall and private firewall
+Public firewall is more strict than private firewall.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Module 5.6
+IPS/IDS--
+
+This network discusses basic network security appliances. 
+Two common security appliances are an IPS and an IDS. 
+IPS stands for Intrusion Prevention System and IDS stands for Intrusion Detection System. 
+
+An IPS is an active system that sits on the network and intercepts network traffic, analyses and stops anything deemed malicious. 
+
+Whereas IDS is a passive system; it doesn’t stop network traffic. It sets alerts and sends messages if something happens, but it does not stop anything. 
+
+IPS and IDS appliances can be either behavior based(based on activity) or signature based(hash based on code), network based(watch network traffic) or host based(Installed on individual device). 
+
+It’s good to have a combination of things for maximum network security.
+
+
+
+
+
+
+
+
+
+Vulnerability Scanners--
+
+This lesson covers vulnerability scanners. 
+Vulnerability scanners are tools that allow us to check and audit devices on our network to see if there are any known weaknesses. 
+
+Two vulnerability scanners are Nessus and Nmap. 
+
+Nessus scans for known vulnerabilities and provides account and auditing. It is run on a scheduled scan cycle. 
+
+Nmap conducts scanning to look for open ports and protocols, services running on ports and OS fingerprinting.
+Nmap is the command line while zenmap is GUI based to scan the networks
+nmap scripting engine which is based on scripts(scripts can be prepared by passing the commands)
+
+
+
+
+
+
+Capturing Methods--
+
+This lesson discusses capturing methods. 
+Capturing methods are ways of detecting and analyzing suspicious activity. 
+Two capturing methods are honey pots and honey nets. 
+
+A honey pot is an intentionally vulnerable machine in order to lure an attacker and try to get them into attacking that machine. 
+A honeypot is useful if the prospective attacker does not figure out it is a honeypot. 
+
+A honey net is an entire network of honey pots. 
+Honey pots are more intricate as well as more convincing at looking at a large enterprise for a would-be attacker.
+
+
+
+#ends
