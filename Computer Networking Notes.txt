@@ -1,0 +1,274 @@
+Physical layer in the OSI model plays the role of interacting with actual hardware and signaling mechanism. Physical layer is the only layer of OSI network model which actually deals with the physical connectivity of two different stations.
+
+Transmission Impairment:-
+Attenuation-signal get weak as it covers distance
+Dispersion-As signal travels through the media, it tends to spread and overlaps
+Delay distortion-some packets gets delayed 
+Noise-thermal or electromagnetic disturbance
+
+Transmission Media:-
+Guided media- In this media, the sender and receiver are directly connected and the information is send (guided) through it
+Unguided media-Wireless or open air space is said to be unguided media, because there is no physical connectivity between the sender and receiver.
+
+Channel Capacity:-The speed of transmission of information is said to be the channel capacity. 
+Numerous factors:-
+Bandwidth:  The physical limitation of underlying media.
+Error-rate:  Incorrect reception of information because of noise.
+Encoding:  The number of levels used for signaling.
+
+The process for converting digital data into digital signal is said to be Line Coding.
+
+Analog data is a continuous stream of data in the wave form whereas digital data is discrete. To convert analog wave into digital data, we use Pulse Code Modulation (PCM).
+
+Asynchronous Serial Transmission-timing is not important but they have specific pattern and they help receiver recognize the start and end data bits.(they move in a specific pattern and have a start and ending packet)
+Synchronous Serial Transmission-Timing in synchronous transmission has importance as there is no mechanism followed to recognize start and end data bits.
+
+transmission media wired:-
+twisted pair cable
+coaxial cable
+fiber optics cable
+
+wireless transmission media:-
+Radio Transmission
+Microwave Transmission
+Infrared Transmission-Infrared wave is used for very short range communication purposes such as television and it’s remote.
+
+
+Multiplexing is a technique by which different analog and digital streams of transmission can be simultaneously processed over a shared link. Multiplexing divides the high capacity medium into low capacity logical medium which is then shared by different streams.
+
+
+
+
+Data Link layer-----
+
+Switching is process to forward packets coming in from one port to a port leading towards the destination. When data comes on a port it is called ingress, and when data leaves a port or goes out it is called egress.
+
+Connectionless:-no prior handshake is needed and data is forwarded on behalf of  forwarding tables
+connection oriented:-handshake required
+
+circuit switching:-When two nodes communicate with each other over a dedicated communication path.circuit must be established so that the data transfer can take place.eg:-phone call
+Message Switching:-A switch working on message switching, first receives the whole message and buffers it until there are resources available to transfer it to the next hop. If the next hop is not having enough resource to accommodate large size message, the message is stored and switch waits.
+Packet Switching:-packets are divided into small chunks called packets.  The internet uses packet switching technique.Packets are stored and forwarded according to their priority to provide quality of service.
+
+
+
+
+
+
+
+
+
+
+
+Error Detection & Correction:-
+single bit error, multiple bit error, burst error(Consecutive bits are wrong)
+error correction:-Cyclic Redundancy Check (CRC) transmits extra bits along with the data and then after reaching the destination the same bits are being checked again that no data is corrupted.
+
+
+
+Data-link Control & Protocols:-
+Flow Control:-two types of mechanism that are used in flow control
+Stop and Wait-----This flow control mechanism forces the sender after transmitting a data frame to stop and wait until the acknowledgement of the data-frame sent is received.
+Sliding Window---both sender and receiver agree on the number of data-frames after which the acknowledgement should be sent. and also the stop and wait waste much resources whereas this mechanism use the underlying resources
+
+
+
+
+Error Control:-There are three types of techniques available which Data-link layer may deploy to control the errors by Automatic Repeat Requests (ARQ):
+Stop and wait ARQ-----the sender maintains a timeout counter.When a frame is sent, the sender starts the timeout counter.If acknowledgement of frame comes in time, the sender transmits the next frame in queue.If acknowledgement does not come in time, the sender assumes that either the frame or its acknowledgement is lost in transit. Sender retransmits the frame and starts the timeout counter.If a negative acknowledgement is received, the sender retransmits the frame.
+Go-Back-N ARQ---- both sender and receiver maintain a window.the sending windows enables the sender to send may frames without getting the acknowledgement packet.When the sender sends all the frames in window, it checks up to what sequence number it has received positive acknowledgement and if there is any failure then it transmits all of them
+Selective Repeat ARQ-same process as go back n arq but just the difference is that it buffers the frames in memory and sends NACK for only frame which is missing or damaged.(not all)
+
+
+
+
+
+
+Network layer:-It has the responsibility to route the packets from source to destination, mapping different addressing schemes and protocols.Addressing devices and networks.Populating routing tables or static routes.Internetworking between two different subnets.(address lagana, route btana ki kaise jaayega data aur conection establish karna)
+fqdn-fully qualified domain name
+
+When a device has multiple paths to reach a destination, it always selects one path by preferring it over others. This selection process is termed as Routing. (Selecting the best path to transfer the information)
+routing is based on these parametres:-Hop Count,Bandwidth,Metric,Prefix-length,Delay
+Unicast Routing:-It is the simplest form of routing because the destination is already known. Hence the router just has to look up the routing table and forward the packet to next hop.(Designed to one host)
+Broadcast routing:-one method is to unicast every single node and then looks like broadcasting is done but multiple copies are created and the second method is to flood all the packets from every interface but tere is a chance of reciving multiple copies.
+
+Reverse path forwarding is a technique, in which router knows in advance about its predecessor from where it should receive broadcast. This technique is used to detect and discard duplicates. 
+
+Unicast Routing Protocols:-two types---
+Distance Vector Routing Protocol- A route with less number of hops is considered as the best route.
+Link State Routing Protocol---Open Shortest Path First (OSPF)
+
+
+Routing Algorithms:-
+1. Flooding-sending packets to all . When a packet is received, the routers send it to all the interfaces except the one on which it was received. but Selective flooding reduce the overhead on the network. In this method, the router does not flood out on all the interfaces, but selective ones.
+2.Shortest Path- Shortest path is a technique which uses various algorithms to decide a path with minimum number of hops.
+
+Routing protocols which are used within an organization or administration are called Interior Gateway Protocols or IGP. RIP, OSPF are examples of IGP. Routing between different organizations or administrations may have Exterior Gateway Protocol, and there is only one EGP i.e. Border Gateway Protocol.
+
+Tunneling:-Tunneling is a mechanism by which two or more same networks communicate with each other, by passing intermediate networking complexities. Tunneling is configured at both ends.
+
+Packet Fragmentation:-internet Protocol process that breaks packets into smaller pieces, so that the resulting pieces can pass through a link with a smaller maximum transmission unit than the original packet size.If packet is fragmented too small, the overhead is increases. If the packet is fragmented too large, intermediate router may not be able to process it and it might get dropped.
+
+Address Resolution packet (ARP)---To know the MAC address of remote host on a broadcast domain, a computer wishing to initiate communication sends out an ARP broadcast message asking, “Who has this IP address?” Because it is a broadcast, all hosts on the network segment (broadcast domain) receive this packet and process it. ARP packet contains the IP address of destination host, the sending host wishes to talk to. When a host receives an ARP packet destined to it, it replies back with its own MAC address.
+
+ICMP-(Internet Control Message Protocol )ICMP-echo and ICMP-echo-reply are the most commonly used ICMP messages to check the reachability of end-to-end hosts. When a host receives an ICMP-echo request, it is bound to send back an ICMP-echo-reply. If there is any problem in the transit network, the ICMP will report that problem.
+
+Internet Protocol Version 4 (IPv4)---IPv4 is 32-bit addressing scheme.
+Class A---1 – 126* (127 for the localhost)    255.0.0.0(subnet mask)
+Class B--128 – 191							  255.255.0.0
+Class C---192 – 223							  255.255.255.0
+Class D--224 – 239					Reserved for Multicasting
+Class E--240 – 254						Experimental; used for research
+
+Private IP Addresses
+Class	Private Networks	Subnet Mask				Address Range
+A	10.0.0.0				255.0.0.0				10.0.0.0 - 10.255.255.255
+B	172.16.0.0 - 172.31.0.0	255.240.0.0				172.16.0.0 - 172.31.255.255
+C	192.168.0.0				255.255.0.0				192.168.0.0 - 192.168.255.255
+
+
+IpV6--Pv6 addresses its nodes with 128-bit wide address.IPv6 enables devices to self-acquire an IPv6 
+address and communicate within that subnet. This auto-configuration removes the dependability of Dynamic 
+Host Configuration Protocol (DHCP) servers.
+IPv6 is still in transition phase and is expected to replace IPv4 completely in coming years. At present, there are few networks which are running on IPv6. There are some transition mechanisms available for IPv6 enabled networks to speak and roam around different networks easily on IPv4. These are:
+Dual stack implementation
+Tunneling
+NAT-PAT
+
+
+
+
+
+
+
+
+Transport Layer---This Layer is the first one which breaks the information data, supplied by Application layer in to smaller units called segments. It numbers every byte in the segment and maintains their accounting.This layer ensures that data must be received in the same sequence in which it was sent.All server processes intend to communicate over the network are equipped with well-known Transport Service Access Points (TSAPs) also known as port numbers.
+The two main Transport layer protocols are:
+Transmission Control Protocol--It provides reliable communication between two hosts.
+User Datagram Protocol--It provides unreliable communication between two hosts.
+
+Transmission Control Protocol---TCP is reliable protocol. That is, the receiver always sends either positive or negative acknowledgement about the data packet to the sender, so that the sender always has bright clue about whether the data packet is reached the destination or it needs to resend it.TCP is connection oriented. TCP requires that connection between two remote points be established before sending actual data.TCP provides error-checking and recovery mechanism.TCP provides end-to-end communication.TCP provides flow control and quality of service.TCP operates in Client/Server point-to-point model.TCP provides full duplex server, i.e. it can perform roles of both receiver and sender.TCP ensures that the data reaches intended destination in the same order it was sent.The length of TCP header is minimum 20 bytes long and maximum 60 bytes
+
+Ports numbers can range from 0 – 65535 divided into 3 basis:-
+System Ports (0 – 1023)
+User Ports ( 1024 – 49151)
+Private/Dynamic Ports (49152 – 65535)
+
+tcp works on cleint server model and the connection is establsihed only when 3 way handshake is completed via syn--> syn+ack---> ack (connection established)
+
+Multiplexing:-The technique to combine two or more data streams in one session is called Multiplexing. When a TCP client initializes a connection with Server, it always refers to a well-defined port number which indicates the application process. The client itself uses a randomly generated port number from private port number pools.Using TCP Multiplexing, a client can communicate with a number of different application process in a single session. For example, a client requests a web page which in turn contains different types of data (HTTP, SMTP, FTP etc.) the TCP session timeout is increased and the session is kept open for longer time so that the three-way handshake overhead can be avoided.This enables the client system to receive multiple connection over single virtual connection. These virtual connections are not good for Servers if the timeout is too long.
+
+Congestion control:---When large amount of data is fed to system which is not capable of handling it, congestion occurs. TCP controls congestion by means of Window mechanism. TCP sets a window size telling the other end how much data segment to send.
+
+
+Timer Management--TCP uses different types of timer to control and management various tasks:--
+keep alive timer--used to check the integrity and validity of a connection.and if it expires it check again by sending probe that stil the connection exists
+retransmission timer--maintains stateful session of data sent.if the acknowledgement of sent data is not received within re transmission time then the data is sent back again
+Persist timer:-it mainly works on windows size and When the Persist timer expires, the host re-sends its window size to let the other end know. avoid deadlocks in communication
+Timed-Wait:---after the data is sent hosts wait for the timed wait time to terminate the connection completely.Timed-out can be a maximum of 240 seconds (4 minutes).
+
+
+Crash Recovery:-TCP is very reliable protocol. It provides sequence number to each of byte sent in segment. It provides the feedback mechanism i.e. when a host receives a packet, it is bound to ACK that packet having the next sequence number expected (if it is not the last segment).When a TCP Server crashes mid-way communication and re-starts its process it sends TPDU broadcast to all its hosts. The hosts can then send the last data segment which was never unacknowledged and carry onwards.
+
+User Datagram Protocol--In UDP, the receiver does not generate an acknowledgement of packet received and in turn, the sender does not wait for any acknowledgement of packet sent. This shortcoming makes this protocol unreliable as well as easier on processing.
+eg-----We deploy UDP where the acknowledgement packets share significant amount of bandwidth along with the actual data. For example, in case of video streaming, thousands of packets are forwarded towards its users. Acknowledging all the packets is troublesome and may contain huge amount of bandwidth wastage. The best delivery mechanism of underlying IP protocol ensures best efforts to deliver its packets, but even if some packets in video streaming get lost, the impact is not calamitous and can be ignored easily. Loss of few packets in video and voice traffic sometimes goes unnoticed.
+Features:---
+UDP is used when acknowledgement of data does not hold any significance.
+UDP is good protocol for data flowing in one direction.
+UDP is simple and suitable for query based communications.
+UDP is not connection oriented.
+UDP does not provide congestion control mechanism.
+UDP does not guarantee ordered delivery of data.
+UDP is stateless.
+UDP is suitable protocol for streaming applications such as VoIP, multimedia streaming.
+
+UDP application
+Here are few applications where UDP is used to transmit data:
+Domain Name Services
+Simple Network Management Protocol
+Trivial File Transfer Protocol
+Routing Information Protocol
+Kerberos
+
+Application Layer---deals with the interacting of user and users applications.A user may or may not directly interacts with the applications. Application layer is where the actual communication is initiated and reflects. Because this layer is on the top of the layer stack, it does not serve any other layers. Application layer takes the help of Transport and all layers below it to communicate or transfer its data to the remote host.
+eg:--DNS is a protocol which helps user application protocols such as HTTP to accomplish its work. 
+
+In client-server model, any process can act as Server or Client. It is not the type of machine, size of the machine, or its computing power which makes it server; it is the ability of serving request that makes a machine a server.
+
+
+Two processes in client-server model can interact in various ways:
+
+Sockets:--
+In this paradigm, the process acting as Server opens a socket using a well-known (or known by client) port and waits until some client request comes. The second process acting as a Client also opens a socket but instead of waiting for an incoming request, the client processes ‘requests first’.
+
+Remote Procedure Calls (RPC)--
+This is a mechanism where one process interacts with another by means of procedure calls. One process (client) calls the procedure lying on remote host. The process on remote host is said to be Server. Both processes are allocated stubs. This communication happens in the following way:
+The client process calls the client stub. It passes all the parameters pertaining to program local to it.
+All parameters are then packed (marshalled) and a system call is made to send them to other side of the network.
+Kernel sends the data over the network and the other end receives it.
+The remote host passes data to the server stub where it is unmarshalled.
+The parameters are passed to the procedure and the procedure is then executed.
+The result is sent back to the client in the same manner.
+
+Application layer serves two protocols i.e. Protocols which are used by users (email) and Protocols which help and support protocols used by users (dns)
+Domain Name System--The Domain Name System (DNS) works on Client Server model. It uses UDP protocol for transport layer communication. DNS uses hierarchical domain based naming scheme. The DNS server is configured with Fully Qualified Domain Names (FQDN) and email addresses mapped with their respective Internet Protocol addresses.A DNS server is requested with FQDN and it responds back with the IP address mapped with it. DNS uses UDP port 53.
+
+Simple Mail Transfer Protocol---Message Transfer Agent uses SMTP to forward the email to another Message Transfer Agent (Server side). While SMTP is used by end user to only send the emails, the Servers normally use SMTP to send as well as receive emails. SMTP uses TCP port number 25 and 587.
+
+File Transfer Protocol
+The File Transfer Protocol (FTP) is the most widely used protocol for file transfer over the network. FTP uses TCP/IP for communication and it works on TCP port 21. FTP works on Client/Server Model where a client requests file from Server and server sends requested resource back to the client.FTP uses out-of-band controlling i.e. FTP uses TCP port 20 for exchanging controlling information and the actual data is sent over TCP port 21.The client requests the server for a file. When the server receives a request for a file, it opens a TCP connection for the client and transfers the file. After the transfer is complete, the server closes the connection. For a second file, client requests again and the server reopens a new TCP connection.Client software uses Internet Message Access Protocol (IMAP) or POP protocols to receive emails.
+
+Post Office Protocol (POP)--The Post Office Protocol version 3 (POP 3) is a simple mail retrieval protocol used by User Agents (client email software) to retrieve mails from mail server.When a client needs to retrieve mails from server, it opens a connection with the server on TCP port 110.It works on two modes--delete mode that deletes the mails from remote computer once downloaded to machine and second is keep mode in which the data is kept even after downloading of mails
+
+HttP- port 80---To access the web pages, a client normally uses web browsers, who are responsible for initiating, maintaining, and closing TCP connections. HTTP is a stateless protocol, which means the Server maintains no information about earlier requests by clients.
+HTTP versions
+HTTP 1.0 uses non persistent HTTP. At most one object can be sent over a single TCP connection.
+HTTP 1.1 uses persistent HTTP. In this version, multiple objects can be sent over a single TCP connection.
+
+
+Network services:-
+Directory services----These services are mapping between name and its value, which can be variable value or fixed. This software system helps to store the information, organize it, and provides various means of accessing it.like accounting, authenication and authorization, domain name services
+
+file services--File services include sharing and transferring files over the network. like file sharing and file transfer.
+Communication services---email,social networking,internet chats,discussion boards,remote access 
+Application Services--resource sharing, Databases and Web services
+
+
+
+
+employee desktop live viewer
+output messenger
+mozilla thunderbird
+
+
+
+
+
+
+
+
+
+
+Subnetting:---Subnetting can only be done in host portion. Subnet mask is used to distinguish the network portion from host portion in an IP address.From these classes, class D and E are reserved and cannot be used in Subnetting.
+Network address represents the network itself while broadcast address represents all the hosts which belong to it.
+All addresses between Network address and Broadcast address are known as valid host addresses. Only valid host addresses can be assigned to the devices in a network.
+
+Type of Subnetting
+There are two types of Subnetting FLSM and VLSM. In FLSM, all subnets have equal number of host addresses and use same Subnet mask. In VLSM, subnets have flexible number of host addresses and use different subnet mask.
+
+While reading an IP address how much portion should be treated as network address and how much portion should be treated as host address is decided by an another address known as Subnet mask.
+For private IP addresses, FLSM is the best choice. For public IP addresses, VLSM is the best option.
+
+Advantage of Subnetting:
+Subnetting allows us to break a single large network in smaller networks. Small networks are easy to manage.
+Subnetting reduces network traffic by allowing only the broadcast traffic which is relevant to the subnet.
+By reducing unnecessary traffic, Subnetting improves overall performance of the network.
+By blocking a subnet’ traffic in subnet, Subnetting increases security of the network.
+Subnetting reduces the requirement of IP range.
+
+
+Disadvantage of Subnetting:
+Different subnets need an intermediate device known as router to communicate with each other.
+Since each subnet uses its own network address and broadcast address, more subnets mean more wastage of IP addresses.
+Subnetting ads complexity in network. An experienced network administrator is required to manage the subnetted network.
+#ends
